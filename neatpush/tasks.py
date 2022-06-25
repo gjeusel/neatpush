@@ -3,9 +3,12 @@ from typing import Any, TypedDict
 
 import aioredis
 import arq
+import structlog
 
 from . import clients
 from .config import CFG
+
+log = structlog.get_logger()
 
 
 class ARQContext(TypedDict):
@@ -19,7 +22,12 @@ async def check_manga(ctx: ARQContext) -> None:
     results = await asyncio.gather(*coroutines)
 
     for manga, chapters in zip(mangas, results):
-        print(f"Found {len(chapters)} chapters for '{manga}'")
+        log.msg(
+            "manga-latest-release",
+            last=chapters[0].num,
+            nchapters=len(chapters),
+            name=manga,
+        )
 
 
 WORKER_FUNCTIONS = [check_manga]
@@ -39,10 +47,10 @@ def generate_worker_settings() -> dict[str, Any]:
     )
 
     async def on_startup(ctx: dict[str, Any]) -> None:
-        pass
+        log.msg("arq-worker-start", dsn=str(CFG.REDIS_DSN))
 
     async def on_shutdown(ctx: dict[str, Any]) -> None:
-        pass
+        log.msg("arq-worker-stop")
 
     ctx: ARQContext = {"manga": clients.MangaClient()}
     settings = dict(

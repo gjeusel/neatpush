@@ -7,6 +7,14 @@ import pandas as pd
 from gazpacho import Soup
 
 
+class MangaNotFound(Exception):
+    def __init__(self, name: str):
+        self.name = name
+
+    def __str__(self) -> str:
+        return f"Manga named '{self.name}' not found."
+
+
 @dataclass
 class MangaChapter:
     num: str
@@ -20,7 +28,7 @@ class MangaClient(httpx.AsyncClient):
         resp = await self.post(url)
 
         if resp.status_code == 404:
-            raise ValueError(f"Manga named '{manga}' not found.")
+            raise MangaNotFound(manga)
 
         resp.raise_for_status()
         soup = Soup(resp.text)

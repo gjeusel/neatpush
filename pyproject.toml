@@ -25,6 +25,8 @@ dependencies = [
   'watchgod',  # watch file change for arq
   'pydantic',
   'pandas',
+  'structlog',
+  'rich',  # add exceptions ftm to structlog
 ]
 
 [project.optional-dependencies]
