@@ -15,7 +15,7 @@ interactions:
       user-agent:
       - python-httpx/0.23.0
     method: POST
-    uri: https://neatmanga.com/manga/berserk/ajax/chapters/
+    uri: https://neatmanga.com/manga/berserk/ajax/chapters
   response:
     content: "<div class=\"c-blog__heading style-2 font-heading\">\n\t<h2 class=\"h4\">\n\t\t<i
       class=\"icon ion-ios-star\"></i>\n\t\tLATEST MANGA RELEASES\t</h2>\n\t<a href=\"#\"
@@ -1634,7 +1634,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 720d441bfde42e44-BRU
+      - 720ddbf2cbe7b9a5-BRU
       Connection:
       - keep-alive
       Content-Encoding:
@@ -1642,13 +1642,13 @@ interactions:
       Content-Type:
       - text/html; charset=UTF-8
       Date:
-      - Sat, 25 Jun 2022 11:12:05 GMT
+      - Sat, 25 Jun 2022 12:55:44 GMT
       Expect-CT:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       NEL:
       - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
       Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=aRtqaGGWDFTnw19Y3jAhlpl0YysIz53oj2tJgFZf4FLaBT5H0HRw7rAcXe1%2BBNDZx8FSyOxffXjRynrDUcKbkSAC%2BRLutklrHisxGqXw4RdQA1A19UGMngmtna8kd76MA9Rtp%2BtT9Lx00TR9"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=OUOS0%2B5EbEZYGL3lzogMZ%2BIqnpbiuXdD3pSGFXL4ombsw%2FvgzsUTz%2FdJkQ2FFfccOXJholthuJaVmlNkgByzEBtU7q2Juzfwvw7Gdf5Sr0l3jyYQp%2FYWS4Il1P1wk0SupaUMXx8zhanoWLro"}],"group":"cf-nel","max_age":604800}'
       Server:
       - cloudflare
       Transfer-Encoding:

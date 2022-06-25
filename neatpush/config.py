@@ -1,0 +1,26 @@
+from pathlib import Path
+
+import pydantic
+
+ENV_FILE_PATH = Path(__file__).parents[1] / ".env"
+
+
+class Config(pydantic.BaseSettings):
+    # Redis cfg:
+    REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"
+    REDIS_TIMEOUT: int = 60
+    REDIS_MINCONN: int = 1
+    REDIS_MAXCONN: int = 10
+
+    # Arq config:
+    ARQ_MAX_JOBS: int = 10
+    ARQ_JOB_TIMEOUT: int = 60  # seconds
+    ARQ_KEEP_RESULT: int = 60  # seconds
+    ARQ_MAX_TRIES: int = 5
+    ARQ_HEALTH_CHECK_INTERVAL: int = 60  # seconds
+
+    class Config:
+        env_file = ENV_FILE_PATH.as_posix()
+
+
+CFG = Config()

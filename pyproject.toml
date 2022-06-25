@@ -20,7 +20,11 @@ dependencies = [
   'typer',
   'gazpacho',  # html parsing - easier than beautiful soup
   'dateparser',  # parse human readable dates
-  # 'pandas',
+  'uvloop',
+  'arq',
+  'watchgod',  # watch file change for arq
+  'pydantic',
+  'pandas',
 ]
 
 [project.optional-dependencies]
@@ -36,6 +40,7 @@ qa = [
 test = [
   'coverage>=5.0.3',
   'pytest',
+  'pytest-asyncio',
   'vcrpy',
 ]
 
@@ -89,3 +94,6 @@ disallow_untyped_defs = false
 disallow_untyped_calls = false
 disallow_incomplete_defs = false
 disallow_untyped_decorators = false
+
+[tool.pytest.ini_options]
+asyncio_mode = 'auto'
