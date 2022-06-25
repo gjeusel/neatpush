@@ -1,0 +1,91 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "neatpush"
+authors = [
+    {name = "Guillaume Jeusel", email = "jeusel.guillaume@gmail.com"},
+]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
+requires-python = ">=3.10"
+dynamic = ["version", "description"]
+
+
+dependencies = [
+  'httpx',
+  'typer',
+  'gazpacho',  # html parsing - easier than beautiful soup
+  'dateparser',  # parse human readable dates
+  # 'pandas',
+]
+
+[project.optional-dependencies]
+qa = [
+  'flake8',
+  'flake8-bugbear',
+  'flake8-builtins',
+  'black',
+  'isort',
+  'pre-commit',
+]
+
+test = [
+  'coverage>=5.0.3',
+  'pytest',
+  'vcrpy',
+]
+
+[project.scripts]
+neatpush = "neatpush.__main__:cli"
+
+[tool.isort]
+line_length = 88
+profile = 'black'
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+    \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | htmlcov
+    | build
+  )/
+)
+'''
+
+[tool.mypy]
+python_version = 3.10
+
+ignore_missing_imports = true
+warn_redundant_casts = true
+warn_unused_configs = true
+show_column_numbers = true
+
+disallow_subclassing_any = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = false
+
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_return_any = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = ['tests.*']
+disallow_subclassing_any = false
+disallow_untyped_defs = false
+disallow_untyped_calls = false
+disallow_incomplete_defs = false
+disallow_untyped_decorators = false
