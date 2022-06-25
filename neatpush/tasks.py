@@ -1,8 +1,10 @@
 import asyncio
+import dataclasses
 from typing import Any, TypedDict
 
 import aioredis
 import arq
+import edgedb
 import structlog
 
 from . import clients
@@ -13,21 +15,38 @@ log = structlog.get_logger()
 
 class ARQContext(TypedDict):
     manga: clients.MangaClient
+    db: edgedb.AsyncIOClient
 
 
 async def check_manga(ctx: ARQContext) -> None:
     client = ctx["manga"]
-    mangas = ("berserk", "overgeared-2020")
-    coroutines = [client.get_neatmanga_latest_releases(manga) for manga in mangas]
+    db = ctx["db"]
+
+    mangas = await db.query("SELECT Manga { name }")
+    coroutines = [client.get_neatmanga_latest_releases(manga.name) for manga in mangas]
     results = await asyncio.gather(*coroutines)
+
+    upsert_chapter_qry = """
+        INSERT MangaChapter {
+            num := <str>$num,
+            timestamp := <datetime>$timestamp,
+            url := <str>$url,
+            manga := (SELECT Manga FILTER .name = <str>$name)
+        }
+        UNLESS CONFLICT ON .url
+    """
 
     for manga, chapters in zip(mangas, results):
         log.msg(
             "manga-latest-release",
             last=chapters[0].num,
             nchapters=len(chapters),
-            name=manga,
+            name=manga.name,
         )
+        for chapter in chapters:
+            await db.query(
+                upsert_chapter_qry, **dataclasses.asdict(chapter), name=manga.name
+            )
 
 
 WORKER_FUNCTIONS = [check_manga]
@@ -52,7 +71,11 @@ def generate_worker_settings() -> dict[str, Any]:
     async def on_shutdown(ctx: dict[str, Any]) -> None:
         log.msg("arq-worker-stop")
 
-    ctx: ARQContext = {"manga": clients.MangaClient()}
+    ctx: ARQContext = {
+        "manga": clients.MangaClient(),
+        "db": edgedb.create_async_client(dsn=CFG.EDGEDB_DSN),
+    }
+
     settings = dict(
         ctx=ctx,
         redis_pool=arq.ArqRedis(pool),

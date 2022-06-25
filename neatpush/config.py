@@ -8,6 +8,9 @@ ENV_FILE_PATH = Path(__file__).parents[1] / ".env"
 
 
 class Config(pydantic.BaseSettings):
+    # EDGEDB:
+    EDGEDB_DSN: str | None = None  #  "edgedb://edgedb@localhost:10703/neatpush"
+
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"
     REDIS_TIMEOUT: int = 60

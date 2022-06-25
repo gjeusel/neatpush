@@ -38,10 +38,10 @@ class MangaClient(httpx.AsyncClient):
         results: list[MangaChapter] = []
         for e in raw:
             timestamp = pd.Timestamp(dateparser.parse(e.find("i").text))
-            chapter = re.sub(r"Chapter ", "", e.find("a").text)
+            num = re.sub(r"Chapter ", "", e.find("a").text)
             results.append(
                 MangaChapter(
-                    num=chapter,
+                    num=num,
                     timestamp=timestamp.tz_localize("CET"),
                     url=e.find("a").attrs["href"],
                 )

@@ -27,6 +27,7 @@ dependencies = [
   'pandas',
   'structlog',
   'rich',  # add exceptions ftm to structlog
+  'edgedb',
 ]
 
 [project.optional-dependencies]
