@@ -14,7 +14,7 @@ class Config(pydantic.BaseSettings):
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"
     REDIS_TIMEOUT: int = 60
-    REDIS_MINCONN: int = 1
+    # REDIS_MINCONN: int = 1
     REDIS_MAXCONN: int = 10
 
     # Arq config:

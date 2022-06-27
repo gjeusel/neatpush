@@ -15,6 +15,7 @@ module default {
     required link notif_status -> NotifStatus {
       default := assert_single((insert NotifStatus {notified := false}))
     };
+
   }
 
   type Manga {
@@ -22,6 +23,5 @@ module default {
       constraint exclusive;
     };
   }
-
 
 }

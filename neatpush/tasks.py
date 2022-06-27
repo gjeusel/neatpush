@@ -1,8 +1,8 @@
 import asyncio
 import dataclasses
+import datetime
 from typing import Any, TypedDict
 
-import aioredis
 import arq
 import edgedb
 import structlog
@@ -13,19 +13,23 @@ from .config import CFG
 log = structlog.get_logger()
 
 
-class ARQContext(TypedDict):
+class ARQBaseContext(TypedDict):
     manga: clients.MangaClient
-    db: edgedb.AsyncIOClient
+    edb: edgedb.AsyncIOClient
 
 
-async def check_manga(ctx: ARQContext) -> None:
-    client = ctx["manga"]
-    db = ctx["db"]
+class ARQContext(ARQBaseContext):
+    enqueue_time: datetime.datetime
+    job_id: str
+    job_try: int
+    score: float
+    redis: arq.ArqRedis
 
-    mangas = await db.query("SELECT Manga { name }")
-    coroutines = [client.get_neatmanga_latest_releases(manga.name) for manga in mangas]
-    results = await asyncio.gather(*coroutines)
 
+async def fetch_manga_chapters(ctx: ARQContext, name: str):
+    chapters = await ctx["manga"].get_neatmanga_latest_releases(name)
+
+    # Upsert results
     upsert_chapter_qry = """
         INSERT MangaChapter {
             num := <str>$num,
@@ -35,55 +39,70 @@ async def check_manga(ctx: ARQContext) -> None:
         }
         UNLESS CONFLICT ON .url
     """
-
-    for manga, chapters in zip(mangas, results):
-        log.msg(
-            "manga-latest-release",
-            last=chapters[0].num,
-            nchapters=len(chapters),
-            name=manga.name,
+    for chapter in chapters:
+        await ctx["edb"].query(
+            upsert_chapter_qry, **dataclasses.asdict(chapter), name=name
         )
-        for chapter in chapters:
-            await db.query(
-                upsert_chapter_qry, **dataclasses.asdict(chapter), name=manga.name
-            )
+
+    # Check if need to notify
+    to_notify_qry = """
+        SELECT MangaChapter { num, url }
+        FILTER .notif_status.notified = false AND .manga.name = <str>$name
+    """
+    chapters = await ctx["edb"].query(to_notify_qry, name=name)
+    for chapter in chapters:
+        log.info("chapter-to-notify", num=chapter.num, name=name)
 
 
-WORKER_FUNCTIONS = [check_manga]
-CRON_JOBS = [arq.cron(check_manga, minute=None, run_at_startup=True)]
+async def manga_fetch_job(ctx: ARQContext) -> None:
+    mangas = await ctx["edb"].query("SELECT Manga { name }")
+
+    coroutines = [
+        ctx["redis"].enqueue_job(fetch_manga_chapters.__name__, name=manga.name)
+        for manga in mangas
+    ]
+    await asyncio.gather(*coroutines)
+
+
+WORKER_FUNCTIONS = [manga_fetch_job, fetch_manga_chapters]
+CRON_JOBS = [arq.cron(manga_fetch_job, minute=None, run_at_startup=True)]
 
 
 def generate_worker_settings() -> dict[str, Any]:
     loop = asyncio.get_event_loop()
-    pool = loop.run_until_complete(
-        aioredis.create_pool(
-            str(CFG.REDIS_DSN),
-            minsize=CFG.REDIS_MINCONN,
-            maxsize=CFG.REDIS_MAXCONN,
-            create_connection_timeout=CFG.REDIS_TIMEOUT,
-            encoding="utf-8",  # needed by arq (string operation on key)
-        )
-    )
+
+    redis_settings = arq.connections.RedisSettings.from_dsn(str(CFG.REDIS_DSN))
+    redis_settings.conn_timeout = CFG.REDIS_TIMEOUT
+    redis_pool = loop.run_until_complete(arq.create_pool(redis_settings))
+    redis_pool.connection_pool.max_connections = CFG.REDIS_MAXCONN
 
     async def on_startup(ctx: dict[str, Any]) -> None:
-        log.msg("arq-worker-start", dsn=str(CFG.REDIS_DSN))
+        log.info("arq-worker-start", dsn=str(CFG.REDIS_DSN))
 
     async def on_shutdown(ctx: dict[str, Any]) -> None:
-        log.msg("arq-worker-stop")
+        log.debug("arq-worker-stop")
 
-    ctx: ARQContext = {
+    async def on_job_start(ctx: ARQContext) -> None:
+        log.debug("arq-job-start", job_try=ctx["job_try"], job_id=ctx["job_id"])
+
+    async def on_job_end(ctx: ARQContext) -> None:
+        log.debug("arq-job-end", job_try=ctx["job_try"], job_id=ctx["job_id"])
+
+    ctx: ARQBaseContext = {
         "manga": clients.MangaClient(),
-        "db": edgedb.create_async_client(dsn=CFG.EDGEDB_DSN),
+        "edb": edgedb.create_async_client(dsn=CFG.EDGEDB_DSN),
     }
 
     settings = dict(
         ctx=ctx,
-        redis_pool=arq.ArqRedis(pool),
+        redis_pool=redis_pool,
         functions=WORKER_FUNCTIONS,
         cron_jobs=CRON_JOBS,
         #
         on_startup=on_startup,
         on_shutdown=on_shutdown,
+        on_job_start=on_job_start,
+        on_job_end=on_job_end,
         #
         max_jobs=CFG.ARQ_MAX_JOBS,
         job_timeout=CFG.ARQ_JOB_TIMEOUT,
