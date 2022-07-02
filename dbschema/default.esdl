@@ -1,12 +1,4 @@
 module default {
-
-  type NotifStatus {
-    required property notified -> bool { default := false };
-    property timestamp -> datetime;
-
-    multi link chapters := .<notif_status[is MangaChapter]
-  }
-
   type MangaChapter {
     required property num -> str;
 
@@ -14,9 +6,8 @@ module default {
     property url -> str { constraint exclusive };
 
     required link manga -> Manga;
-    required link notif_status -> NotifStatus {
-      default := assert_single((insert NotifStatus {notified := false}))
-    };
+
+    property notified -> bool { default := false };
 
   }
 
@@ -27,5 +18,4 @@ module default {
 
     multi link chapters := .<manga[is MangaChapter]
   }
-
 }

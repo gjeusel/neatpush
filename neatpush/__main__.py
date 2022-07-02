@@ -42,11 +42,11 @@ def run_worker(
 @cli.command("seed")
 def seed():
     # Cleanup
-    for t in ("MangaChapter", "NotifStatus", "Manga"):
+    for t in ("MangaChapter", "Manga"):
         db.query(f"DELETE {t}")
 
     # Generate data
-    mangas = ("berserk", "overgeared-2020")
+    mangas = ("berserk", "overgeared-2020", "one-piece", "one-punch-man")
     for manga in mangas:
         db.query("INSERT Manga { name := <str>$name }", name=manga)
 

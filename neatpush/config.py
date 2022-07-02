@@ -19,6 +19,7 @@ class Config(pydantic.BaseSettings):
 
     # EDGEDB:
     EDGEDB_DSN: str | None = None  # "edgedb://edgedb@localhost:10703/neatpush"
+    EDGEDB_TLS_SECURITY: str | None = "insecure"
 
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"

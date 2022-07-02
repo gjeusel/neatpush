@@ -60,8 +60,8 @@ async def notify_manga_chapters(
             )
 
     notified_qry = """
-        UPDATE NotifStatus
-        FILTER .chapters.id in array_unpack(<array<uuid>>$uuids)
+        UPDATE MangaChapter
+        FILTER .id in array_unpack(<array<uuid>>$uuids)
         SET {notified := true}
     """
     await ctx["edb"].query(notified_qry, uuids=uuid_chapters)
@@ -111,7 +111,9 @@ def generate_worker_settings() -> dict[str, Any]:
 
     ctx: ARQBaseContext = {
         "manga": clients.MangaClient(),
-        "edb": edgedb.create_async_client(dsn=CFG.EDGEDB_DSN),
+        "edb": edgedb.create_async_client(
+            dsn=CFG.EDGEDB_DSN, tls_security=CFG.EDGEDB_TLS_SECURITY
+        ),
         "twilio": clients.TwilioClient(
             account_sid=CFG.TWILIO_ACCOUNT_SID, auth_token=CFG.TWILIO_AUTH_TOKEN
         ),

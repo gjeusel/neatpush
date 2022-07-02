@@ -115,3 +115,6 @@ ENV/
 
 # pytest-profiling
 prof/
+
+# docker-compose
+edgedb-data

@@ -1,0 +1,56 @@
+# platform: "linux/amd64"
+
+networks:
+  neatpush:
+    name: neatpush
+
+volumes:
+  postgres-data:
+
+services:
+  edgedb:
+    image: edgedb/edgedb:nightly_2-dev6692_cv202206230000
+    environment:
+      EDGEDB_CLIENT_TLS_SECURITY: insecure
+      EDGEDB_SERVER_SECURITY: insecure_dev_mode
+    volumes:
+      - ./edgedb-data:/var/lib/edgedb/data
+      - ./dbschema:/dbschema
+    # healthcheck:
+    #   test: ["CMD", "edgedb", "query", "select 1"]
+    ports:
+      - 5657:5656
+    networks:
+      - neatpush
+
+  # edgedb-cli:
+  #   image: edgedb/edgedb-cli
+
+  redis:
+    image: bitnami/redis:6.0.8-debian-10-r35
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - neatpush
+
+  worker:
+    platform: "linux/amd64"
+    build: .
+    networks:
+      - neatpush
+    env_file:
+      - ./.env
+    environment:
+      REDIS_DSN: redis://redis:6379
+      EDGEDB_DSN: edgedb://edgedb@edgedb:5656/edgedb
+    command: "neatpush worker"
+    volumes:
+      - .:/neatpush:delegated
+    depends_on:
+      redis:
+        condition: service_healthy
+      edgedb:
+        condition: service_started
+        # condition: service_healthy
