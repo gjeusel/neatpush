@@ -16,19 +16,28 @@ dynamic = ["version", "description"]
 
 
 dependencies = [
-  'httpx',
   'typer',
+  'uvloop',
+  'pydantic[dotenv]',
+
+  # scraping:
+  'httpx',
   'gazpacho',  # html parsing - easier than beautiful soup
   'dateparser',  # parse human readable dates
-  'uvloop',
+
+  # task queue:
   'arq==0.23a1',
   'aioredis==2.0.1',
+  'orjson',
   'watchgod',  # watch file change for arq
-  'pydantic',
-  'pandas',
+
+  # logs:
   'structlog',
   'rich',  # add exceptions ftm to structlog
+
+  # edgedb:
   'edgedb',
+  'edgeql-queries==0.4.0',  # https://github.com/nsidnev/edgeql-queries
 ]
 
 [project.optional-dependencies]

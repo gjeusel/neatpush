@@ -1,14 +1,17 @@
 import asyncio
-import dataclasses
 import datetime
+import uuid
+from itertools import chain
 from typing import Any, TypedDict
 
 import arq
 import edgedb
+import orjson
 import structlog
 
 from . import clients
 from .config import CFG
+from .edbqueries import queries
 
 log = structlog.get_logger()
 
@@ -16,6 +19,7 @@ log = structlog.get_logger()
 class ARQBaseContext(TypedDict):
     manga: clients.MangaClient
     edb: edgedb.AsyncIOClient
+    notify: clients.MyNotifierClient
 
 
 class ARQContext(ARQBaseContext):
@@ -26,46 +30,54 @@ class ARQContext(ARQBaseContext):
     redis: arq.ArqRedis
 
 
-async def fetch_manga_chapters(ctx: ARQContext, name: str):
+async def fetch_manga_chapters(ctx: ARQContext, name: str) -> list[uuid.UUID]:
     chapters = await ctx["manga"].get_neatmanga_latest_releases(name)
 
-    # Upsert results
-    upsert_chapter_qry = """
-        INSERT MangaChapter {
-            num := <str>$num,
-            timestamp := <datetime>$timestamp,
-            url := <str>$url,
-            manga := (SELECT Manga FILTER .name = <str>$name)
-        }
-        UNLESS CONFLICT ON .url
+    new_chapters = await queries.manga_chapters_upsert(
+        ctx["edb"], chapters=orjson.dumps(chapters).decode("utf-8"), name=name
+    )
+    if new_chapters:
+        log.info("new-chapter", manga=name, number=len(new_chapters))
+
+    return [obj.id for obj in new_chapters]
+
+
+async def notify_manga_chapters(
+    ctx: ARQContext, uuid_chapters: list[uuid.UUID]
+) -> None:
+    chapters_qry = """
+        SELECT MangaChapter { name := .manga.name, num, url }
+        filter .id in array_unpack(<array<uuid>>$uuids)
     """
+    chapters = await ctx["edb"].query(chapters_qry, uuids=uuid_chapters)
+
     for chapter in chapters:
-        await ctx["edb"].query(
-            upsert_chapter_qry, **dataclasses.asdict(chapter), name=name
-        )
-
-    # Check if need to notify
-    to_notify_qry = """
-        SELECT MangaChapter { num, url }
-        FILTER .notif_status.notified = false AND .manga.name = <str>$name
-    """
-    chapters = await ctx["edb"].query(to_notify_qry, name=name)
-    for chapter in chapters:
-        log.info("chapter-to-notify", num=chapter.num, name=name)
+        log.info("notify", manga=chapter.name, num=chapter.num, url=chapter.url)
+        if CFG.MYNOTIFIER_ENABLED:
+            message = f"{chapter.name} - New Chapter {chapter.num} !"
+            await ctx["notify"].push_notif(message=message, description=chapter.url)
 
 
-async def manga_fetch_job(ctx: ARQContext) -> None:
+async def manga_job(ctx: ARQContext) -> None:
     mangas = await ctx["edb"].query("SELECT Manga { name }")
 
-    coroutines = [
+    fetch_coroutines = [
         ctx["redis"].enqueue_job(fetch_manga_chapters.__name__, name=manga.name)
         for manga in mangas
     ]
-    await asyncio.gather(*coroutines)
+    ops = await asyncio.gather(*fetch_coroutines)
+
+    new_chapters = await asyncio.gather(*[op.result(timeout=5) for op in ops])
+    uuid_chapters = list(chain.from_iterable(new_chapters))
+
+    if uuid_chapters:
+        await ctx["redis"].enqueue_job(
+            notify_manga_chapters.__name__, uuid_chapters=uuid_chapters
+        )
 
 
-WORKER_FUNCTIONS = [manga_fetch_job, fetch_manga_chapters]
-CRON_JOBS = [arq.cron(manga_fetch_job, minute=None, run_at_startup=True)]
+WORKER_FUNCTIONS = [manga_job, fetch_manga_chapters, notify_manga_chapters]
+CRON_JOBS = [arq.cron(manga_job, minute=None, run_at_startup=True)]
 
 
 def generate_worker_settings() -> dict[str, Any]:
@@ -91,6 +103,7 @@ def generate_worker_settings() -> dict[str, Any]:
     ctx: ARQBaseContext = {
         "manga": clients.MangaClient(),
         "edb": edgedb.create_async_client(dsn=CFG.EDGEDB_DSN),
+        "notify": clients.MyNotifierClient(api_key=CFG.MYNOTIFIER_API_KEY),
     }
 
     settings = dict(

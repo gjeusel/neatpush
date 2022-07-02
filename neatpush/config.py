@@ -8,8 +8,12 @@ ENV_FILE_PATH = Path(__file__).parents[1] / ".env"
 
 
 class Config(pydantic.BaseSettings):
+    # MyNotifier API
+    MYNOTIFIER_ENABLED: bool = False
+    MYNOTIFIER_API_KEY: str | None = None
+
     # EDGEDB:
-    EDGEDB_DSN: str | None = None  #  "edgedb://edgedb@localhost:10703/neatpush"
+    EDGEDB_DSN: str | None = None  # "edgedb://edgedb@localhost:10703/neatpush"
 
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"

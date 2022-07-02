@@ -3,6 +3,8 @@ module default {
   type NotifStatus {
     required property notified -> bool { default := false };
     property timestamp -> datetime;
+
+    multi link chapters := .<notif_status[is MangaChapter]
   }
 
   type MangaChapter {
@@ -22,6 +24,8 @@ module default {
     required property name -> str {
       constraint exclusive;
     };
+
+    multi link chapters := .<manga[is MangaChapter]
   }
 
 }
