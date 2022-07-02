@@ -17,5 +17,6 @@ WORKDIR $APP_DIR
 ADD . $APP_DIR
 
 RUN pip install --editable .
+RUN pip install git+https://github.com/edgedb/edgedb-python@14f8a32ca415fee1219d62343cfbca239eaa12d1
 
 CMD ["python", "-c", "import neatpush; print(neatpush.__version__)"]

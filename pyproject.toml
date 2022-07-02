@@ -36,7 +36,9 @@ dependencies = [
   'rich',  # add exceptions ftm to structlog
 
   # edgedb:
-  'edgedb==0.24.0a4',
+  # 'edgedb==0.24.0a5',  # not yet available, in the meantime:
+  # pip install git+https://github.com/edgedb/edgedb-python@14f8a32ca415fee1219d62343cfbca239eaa12d1
+
   'edgeql-queries==0.4.0',  # https://github.com/nsidnev/edgeql-queries
 ]
 
