@@ -8,9 +8,14 @@ ENV_FILE_PATH = Path(__file__).parents[1] / ".env"
 
 
 class Config(pydantic.BaseSettings):
-    # MyNotifier API
-    MYNOTIFIER_ENABLED: bool = False
-    MYNOTIFIER_API_KEY: str | None = None
+    # Twilio API
+    # https://console.twilio.com/us1/develop/sms/settings/whatsapp-sandbox?frameUrl=%2Fconsole%2Fsms%2Fwhatsapp%2Fsandbox%3Fx-target-region%3Dus1  # noqa
+    TWILIO_ENABLED: bool = False
+    TWILIO_ACCOUNT_SID: str | None = None
+    TWILIO_SERVICE_SID: str | None = None
+    TWILIO_AUTH_TOKEN: str | None = None
+    TWILIO_NUM_FROM: str | None = None
+    TWILIO_NUM_TO: str | None = None
 
     # EDGEDB:
     EDGEDB_DSN: str | None = None  # "edgedb://edgedb@localhost:10703/neatpush"

@@ -1,7 +1,7 @@
 import datetime
 import re
 from dataclasses import dataclass
-from typing import Literal
+from typing import Any
 
 import dateparser
 import httpx
@@ -54,24 +54,40 @@ class MangaClient(httpx.AsyncClient):
         return results
 
 
-class MyNotifierClient(httpx.AsyncClient):
-    def __init__(
-        self, api_key: str, base_url: str = "https://api.mynotifier.app", **kwargs
-    ):
-        self.api_key = api_key
-        super().__init__(base_url=base_url, **kwargs)
+class TwilioClient(httpx.AsyncClient):
+    notify_base_url = "https://notify.twilio.com"
+    api_base_url = "https://api.twilio.com"
 
-    async def push_notif(
+    def __init__(
         self,
+        account_sid: str,
+        auth_token: str,
+        service_sid: str | None = None,
+        **kwargs: dict[str, Any],
+    ):
+        super().__init__(**kwargs, auth=(account_sid, auth_token))
+        self.account_sid = account_sid
+        self.service_sid = service_sid
+
+    async def send_whatsapp_msg(
+        self,
+        num_to: str,
         message: str,
-        description: str,
-        level: Literal["info", "warning", "error", "success"] = "info",
-    ) -> None:
-        data = {
-            "apiKey": self.api_key,
-            "message": message,
-            "description": description,
-            "type": level,
-        }
-        response = await self.post("", data=data)
-        response.raise_for_status()
+        num_from: str | None = None,
+    ) -> dict[str, Any]:
+        url = f"{self.api_base_url}/2010-04-01/Accounts/{self.account_sid}/Messages.json"  # noqa
+        data = {"To": f"whatsapp:{num_to}", "Body": message}
+        if num_from:
+            data["From"] = f"whatsapp:{num_from}"
+
+        resp = await self.post(url, data=data)
+        resp.raise_for_status()
+        return resp.json()
+
+    async def notify(self, message: str) -> dict[str, Any]:
+        url = f"{self.notify_base_url}/v1/Services/{self.service_sid}/Notifications"
+        data = {"Identity": "0000001", "Body": message}
+
+        resp = await self.post(url, data=data)
+        resp.raise_for_status()
+        return resp.json()

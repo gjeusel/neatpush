@@ -19,7 +19,7 @@ log = structlog.get_logger()
 class ARQBaseContext(TypedDict):
     manga: clients.MangaClient
     edb: edgedb.AsyncIOClient
-    notify: clients.MyNotifierClient
+    twilio: clients.TwilioClient
 
 
 class ARQContext(ARQBaseContext):
@@ -53,9 +53,18 @@ async def notify_manga_chapters(
 
     for chapter in chapters:
         log.info("notify", manga=chapter.name, num=chapter.num, url=chapter.url)
-        if CFG.MYNOTIFIER_ENABLED:
-            message = f"{chapter.name} - New Chapter {chapter.num} !"
-            await ctx["notify"].push_notif(message=message, description=chapter.url)
+        if CFG.TWILIO_ENABLED:
+            message = f"*{chapter.name}* - New Chapter {chapter.num} !\n{chapter.url}"
+            await ctx["twilio"].send_whatsapp_msg(
+                message=message, num_from=CFG.TWILIO_NUM_FROM, num_to=CFG.TWILIO_NUM_TO
+            )
+
+    notified_qry = """
+        UPDATE NotifStatus
+        FILTER .chapters.id in array_unpack(<array<uuid>>$uuids)
+        SET {notified := true}
+    """
+    await ctx["edb"].query(notified_qry, uuids=uuid_chapters)
 
 
 async def manga_job(ctx: ARQContext) -> None:
@@ -103,7 +112,9 @@ def generate_worker_settings() -> dict[str, Any]:
     ctx: ARQBaseContext = {
         "manga": clients.MangaClient(),
         "edb": edgedb.create_async_client(dsn=CFG.EDGEDB_DSN),
-        "notify": clients.MyNotifierClient(api_key=CFG.MYNOTIFIER_API_KEY),
+        "twilio": clients.TwilioClient(
+            account_sid=CFG.TWILIO_ACCOUNT_SID, auth_token=CFG.TWILIO_AUTH_TOKEN
+        ),
     }
 
     settings = dict(

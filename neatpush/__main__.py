@@ -6,6 +6,7 @@ import typer
 import uvloop
 from arq.cli import watch_reload as run_worker_watch_reload
 
+from . import clients
 from .config import CFG
 from .constant import SRC_DIR
 from .tasks import generate_worker_settings
@@ -48,6 +49,20 @@ def seed():
     mangas = ("berserk", "overgeared-2020")
     for manga in mangas:
         db.query("INSERT Manga { name := <str>$name }", name=manga)
+
+
+@cli.command("msg")
+def send_message(message: str = "Hello"):
+    client = clients.TwilioClient(
+        account_sid=CFG.TWILIO_ACCOUNT_SID,
+        service_sid=CFG.TWILIO_SERVICE_SID,
+        auth_token=CFG.TWILIO_AUTH_TOKEN,
+    )
+    loop.run_until_complete(
+        client.send_whatsapp_msg(
+            num_to=CFG.TWILIO_NUM_TO, num_from=CFG.TWILIO_NUM_FROM, message=message
+        )
+    )
 
 
 if __name__ == "__main__":
