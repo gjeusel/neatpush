@@ -17,7 +17,7 @@ loop = asyncio.get_event_loop()
 
 cli = typer.Typer()
 
-db = edgedb.create_client(CFG.EDGEDB_DSN)
+db = edgedb.create_client(dsn=CFG.EDGEDB_DSN, tls_security=CFG.EDGEDB_TLS_SECURITY)
 
 
 @cli.command("worker")
