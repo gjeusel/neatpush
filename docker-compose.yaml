@@ -12,6 +12,7 @@ services:
       EDGEDB_SERVER_SECURITY: insecure_dev_mode
       EDGEDB_SERVER_DEFAULT_AUTH_METHOD: Trust
       EDGEDB_DOCKER_LOG_LEVEL: info
+      EDGEDB_SERVER_EXTRA_ARGS: "--compiler-pool-mode on_demand"
     volumes:
       - ./edgedb-data:/var/lib/edgedb/data
       - ./dbschema:/dbschema
