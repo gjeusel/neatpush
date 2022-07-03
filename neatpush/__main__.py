@@ -46,7 +46,14 @@ def seed():
         db.query(f"DELETE {t}")
 
     # Generate data
-    mangas = ("berserk", "overgeared-2020", "one-piece", "one-punch-man")
+    mangas = (
+        "one-piece",
+        "one-punch-man",
+        "berserk",
+        "omniscient-readers-viewpoint",
+        "overgeared-2020",
+        "tales-of-demons-and-gods",
+    )
     for manga in mangas:
         db.query("INSERT Manga { name := <str>$name }", name=manga)
 
