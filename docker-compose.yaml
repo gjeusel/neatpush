@@ -1,6 +1,5 @@
 networks:
-  neatpush:
-    name: neatpush
+  neatpush: {}
 
 services:
   edgedb:
@@ -35,10 +34,10 @@ services:
 
   redis:
     image: redis:6.2.7-bullseye
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
     networks:
       - neatpush
 
