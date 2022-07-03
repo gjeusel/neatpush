@@ -42,14 +42,12 @@ async def fetch_manga_chapters(ctx: ARQContext, name: str) -> list[uuid.UUID]:
     return [obj.id for obj in new_chapters]
 
 
-async def notify_manga_chapters(
-    ctx: ARQContext, uuid_chapters: list[uuid.UUID]
-) -> None:
-    chapters_qry = """
-        SELECT MangaChapter { name := .manga.name, num, url }
-        filter .id in array_unpack(<array<uuid>>$uuids)
+async def notify_manga_chapters(ctx: ARQContext) -> None:
+    to_notify_qry = """
+        SELECT MangaChapter { id, name := .manga.name, num, url }
+        filter .notified = false
     """
-    chapters = await ctx["edb"].query(chapters_qry, uuids=uuid_chapters)
+    chapters = await ctx["edb"].query(to_notify_qry)
 
     for chapter in chapters:
         log.info("notify", manga=chapter.name, num=chapter.num, url=chapter.url)
@@ -64,7 +62,9 @@ async def notify_manga_chapters(
         FILTER .id in array_unpack(<array<uuid>>$uuids)
         SET {notified := true}
     """
-    await ctx["edb"].query(notified_qry, uuids=uuid_chapters)
+    await ctx["edb"].query(notified_qry, uuids=[chapter.id for chapter in chapters])
+
+    log.info("")
 
 
 async def manga_job(ctx: ARQContext) -> None:
@@ -76,26 +76,37 @@ async def manga_job(ctx: ARQContext) -> None:
     ]
     ops = await asyncio.gather(*fetch_coroutines)
 
-    new_chapters = await asyncio.gather(*[op.result(timeout=5) for op in ops])
+    new_chapters = await asyncio.gather(
+        *[op.result(timeout=CFG.REDIS_TIMEOUT) for op in ops]
+    )
     uuid_chapters = list(chain.from_iterable(new_chapters))
 
     if uuid_chapters:
-        await ctx["redis"].enqueue_job(
-            notify_manga_chapters.__name__, uuid_chapters=uuid_chapters
-        )
+        log.info("new-chapters", number=len(uuid_chapters))
+        ctx["redis"].enqueue_job(notify_manga_chapters.__name__)
 
 
 WORKER_FUNCTIONS = [manga_job, fetch_manga_chapters, notify_manga_chapters]
-CRON_JOBS = [arq.cron(manga_job, minute=None, run_at_startup=True)]
+
+every_5_min = tuple(range(0, 60, 5))  # "*/5" not working in arq
+
+CRON_JOBS = [
+    arq.cron(manga_job, minute=every_5_min),
+    # arq.cron(notify_manga_chapters, minute=every_5_min),
+]
 
 
-def generate_worker_settings() -> dict[str, Any]:
+def create_arq_redis() -> arq.ArqRedis:
     loop = asyncio.get_event_loop()
-
     redis_settings = arq.connections.RedisSettings.from_dsn(str(CFG.REDIS_DSN))
     redis_settings.conn_timeout = CFG.REDIS_TIMEOUT
     redis_pool = loop.run_until_complete(arq.create_pool(redis_settings))
     redis_pool.connection_pool.max_connections = CFG.REDIS_MAXCONN
+    return redis_pool
+
+
+def generate_worker_settings() -> dict[str, Any]:
+    redis_pool = create_arq_redis()
 
     async def on_startup(ctx: dict[str, Any]) -> None:
         log.info("arq-worker-start", dsn=str(CFG.REDIS_DSN))

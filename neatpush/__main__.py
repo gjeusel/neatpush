@@ -9,7 +9,7 @@ from arq.cli import watch_reload as run_worker_watch_reload
 from . import clients
 from .config import CFG
 from .constant import SRC_DIR
-from .tasks import generate_worker_settings
+from .tasks import create_arq_redis, generate_worker_settings
 
 uvloop.install()
 
@@ -39,7 +39,21 @@ def run_worker(
         loop.run_until_complete(arq.run_worker(worker_settings, **kwargs))
 
 
-@cli.command("seed")
+task_cli = typer.Typer()
+cli.add_typer(task_cli, name="task")
+
+
+@task_cli.command("enqueue")
+def task_enqueue(name: str):
+    redis = create_arq_redis()
+    loop.run_until_complete(redis.enqueue_job(name))
+
+
+db_cli = typer.Typer()
+cli.add_typer(db_cli, name="db")
+
+
+@db_cli.command("seed")
 def seed():
     # Cleanup
     for t in ("MangaChapter", "Manga"):
