@@ -22,7 +22,7 @@ class Config(pydantic.BaseSettings):
     EDGEDB_TLS_SECURITY: str | None = None  # "insecure"
 
     # Redis cfg:
-    REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"
+    REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"  # pyright: ignore
     REDIS_TIMEOUT: int = 60
     # REDIS_MINCONN: int = 1
     REDIS_MAXCONN: int = 10
