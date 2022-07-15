@@ -17,9 +17,8 @@ class Config(pydantic.BaseSettings):
     TWILIO_NUM_FROM: str | None = None
     TWILIO_NUM_TO: str | None = None
 
-    # EDGEDB:
-    EDGEDB_DSN: str | None = None  # "edgedb://edgedb@localhost:10703/neatpush"
-    EDGEDB_TLS_SECURITY: str | None = None  # "insecure"
+    # DB:
+    DATABASE_URL: str = "sqlite:///db.sqlite"
 
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"  # pyright: ignore

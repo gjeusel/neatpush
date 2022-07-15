@@ -5,8 +5,8 @@ from itertools import chain
 from typing import Any, TypedDict
 
 import arq
-import edgedb
 import orjson
+import prisma
 import structlog
 
 from . import clients
@@ -18,8 +18,9 @@ log = structlog.get_logger()
 
 class ARQBaseContext(TypedDict):
     manga: clients.MangaClient
-    edb: edgedb.AsyncIOClient
-    twilio: clients.TwilioClient
+    db: prisma.Prisma
+    twilio: clients.TwilioClient | None
+    redis: arq.ArqRedis
 
 
 class ARQContext(ARQBaseContext):
@@ -108,10 +109,26 @@ def create_arq_redis() -> arq.ArqRedis:
 def generate_worker_settings() -> dict[str, Any]:
     redis_pool = create_arq_redis()
 
-    async def on_startup(ctx: dict[str, Any]) -> None:
+    if not all([CFG.TWILIO_ENABLED, CFG.TWILIO_ACCOUNT_SID, CFG.TWILIO_AUTH_TOKEN]):
+        twilio = None
+    else:
+        twilio = clients.TwilioClient(
+            account_sid=CFG.TWILIO_ACCOUNT_SID, auth_token=CFG.TWILIO_AUTH_TOKEN
+        )
+
+    ctx: ARQBaseContext = {
+        "manga": clients.MangaClient(),
+        "db": Prisma(),
+        "twilio": twilio,
+        "redis": redis_pool,
+    }
+
+    async def on_startup(ctx: ARQBaseContext) -> None:
+        await ctx["db"].connect()
         log.info("arq-worker-start", dsn=str(CFG.REDIS_DSN))
 
-    async def on_shutdown(ctx: dict[str, Any]) -> None:
+    async def on_shutdown(ctx: ARQBaseContext) -> None:
+        await ctx["db"].disconnect()
         log.debug("arq-worker-stop")
 
     async def on_job_start(ctx: ARQContext) -> None:
@@ -119,16 +136,6 @@ def generate_worker_settings() -> dict[str, Any]:
 
     async def on_job_end(ctx: ARQContext) -> None:
         log.debug("arq-job-end", job_try=ctx["job_try"], job_id=ctx["job_id"])
-
-    ctx: ARQBaseContext = {
-        "manga": clients.MangaClient(),
-        "edb": edgedb.create_async_client(
-            dsn=CFG.EDGEDB_DSN, tls_security=CFG.EDGEDB_TLS_SECURITY
-        ),
-        "twilio": clients.TwilioClient(
-            account_sid=CFG.TWILIO_ACCOUNT_SID, auth_token=CFG.TWILIO_AUTH_TOKEN
-        ),
-    }
 
     settings = dict(
         ctx=ctx,
