@@ -1,17 +1,20 @@
 import asyncio
+import dataclasses
 import datetime
 import uuid
-from itertools import chain
-from typing import Any, TypedDict
+
+# from itertools import chain
+from typing import Any, Awaitable, TypedDict
 
 import arq
-import orjson
-import prisma
+
+# import orjson
 import structlog
+
+import prisma
 
 from . import clients
 from .config import CFG
-from .edbqueries import queries
 
 log = structlog.get_logger()
 
@@ -32,59 +35,80 @@ class ARQContext(ARQBaseContext):
 
 
 async def fetch_manga_chapters(ctx: ARQContext, name: str) -> list[uuid.UUID]:
+    db = ctx["db"]
+
     chapters = await ctx["manga"].get_neatmanga_latest_releases(name)
+    coroutines: list[Awaitable[Any]] = []
+    for chapter in chapters:
+        coroutines.append(
+            db.mangachapter.upsert(
+                where={"url": chapter.url},
+                data={
+                    "create": dataclasses.asdict(chapter),
+                },
+            )
+        )
 
-    new_chapters = await queries.manga_chapters_upsert(
-        ctx["edb"], chapters=orjson.dumps(chapters).decode("utf-8"), name=name
-    )
-    if new_chapters:
-        log.info("new-chapter", manga=name, number=len(new_chapters))
+    results = await asyncio.gather(*coroutines)
+    __import__("pdb").set_trace()  # BREAKPOINT
 
-    return [obj.id for obj in new_chapters]
+    # new_chapters = await queries.manga_chapters_upsert(
+    #     ctx["db"], chapters=orjson.dumps(chapters).decode("utf-8"), name=name
+    # )
+    # if new_chapters:
+    #     log.info("new-chapter", manga=name, number=len(new_chapters))
+
+    # return [obj.id for obj in new_chapters]
 
 
 async def notify_manga_chapters(ctx: ARQContext) -> None:
-    to_notify_qry = """
-        SELECT MangaChapter { id, name := .manga.name, num, url }
-        filter .notified = false
-    """
-    chapters = await ctx["edb"].query(to_notify_qry)
+    # to_notify_qry = """
+    #     SELECT MangaChapter { id, name := .manga.name, num, url }
+    #     filter .notified = false
+    # """
+    # chapters = await ctx["edb"].query(to_notify_qry)
 
-    for chapter in chapters:
-        log.info("notify", manga=chapter.name, num=chapter.num, url=chapter.url)
-        if CFG.TWILIO_ENABLED:
-            message = f"*{chapter.name}* - New Chapter {chapter.num} !\n{chapter.url}"
-            await ctx["twilio"].send_whatsapp_msg(
-                message=message, num_from=CFG.TWILIO_NUM_FROM, num_to=CFG.TWILIO_NUM_TO
-            )
+    chapters = await ctx["db"].mangachapter.find_many(
+        where={"notified": False},
+        include={"manga": {"select": {"name": True}}},
+    )
+    __import__("pdb").set_trace()  # BREAKPOINT
 
-    notified_qry = """
-        UPDATE MangaChapter
-        FILTER .id in array_unpack(<array<uuid>>$uuids)
-        SET {notified := true}
-    """
-    await ctx["edb"].query(notified_qry, uuids=[chapter.id for chapter in chapters])
+    # for chapter in chapters:
+    #     log.info("notify", manga=chapter.name, num=chapter.num, url=chapter.url)
+    #     if CFG.TWILIO_ENABLED:
+    #         message = f"*{chapter.name}* - New Chapter {chapter.num} !\n{chapter.url}"
+    #         await ctx["twilio"].send_whatsapp_msg(
+    #             message=message, num_from=CFG.TWILIO_NUM_FROM, num_to=CFG.TWILIO_NUM_TO
+    #         )
 
-    log.info("")
+    # notified_qry = """
+    #     UPDATE MangaChapter
+    #     FILTER .id in array_unpack(<array<uuid>>$uuids)
+    #     SET {notified := true}
+    # """
+    # await ctx["edb"].query(notified_qry, uuids=[chapter.id for chapter in chapters])
 
 
 async def manga_job(ctx: ARQContext) -> None:
-    mangas = await ctx["edb"].query("SELECT Manga { name }")
-
-    fetch_coroutines = [
-        ctx["redis"].enqueue_job(fetch_manga_chapters.__name__, name=manga.name)
-        for manga in mangas
-    ]
-    ops = await asyncio.gather(*fetch_coroutines)
-
-    new_chapters = await asyncio.gather(
-        *[op.result(timeout=CFG.REDIS_TIMEOUT) for op in ops]
+    mangas = await ctx["db"].manga.find_many(
     )
-    uuid_chapters = list(chain.from_iterable(new_chapters))
+    __import__("pdb").set_trace()  # BREAKPOINT
 
-    if uuid_chapters:
-        log.info("new-chapters", number=len(uuid_chapters))
-        ctx["redis"].enqueue_job(notify_manga_chapters.__name__)
+    # fetch_coroutines = [
+    #     ctx["redis"].enqueue_job(fetch_manga_chapters.__name__, name=manga.name)
+    #     for manga in mangas
+    # ]
+    # ops = await asyncio.gather(*fetch_coroutines)
+
+    # new_chapters = await asyncio.gather(
+    #     *[op.result(timeout=CFG.REDIS_TIMEOUT) for op in ops]
+    # )
+    # uuid_chapters = list(chain.from_iterable(new_chapters))
+
+    # if uuid_chapters:
+    #     log.info("new-chapters", number=len(uuid_chapters))
+    #     ctx["redis"].enqueue_job(notify_manga_chapters.__name__)
 
 
 WORKER_FUNCTIONS = [manga_job, fetch_manga_chapters, notify_manga_chapters]
@@ -92,7 +116,7 @@ WORKER_FUNCTIONS = [manga_job, fetch_manga_chapters, notify_manga_chapters]
 every_5_min = tuple(range(0, 60, 5))  # "*/5" not working in arq
 
 CRON_JOBS = [
-    arq.cron(manga_job, minute=every_5_min),
+    arq.cron(manga_job, minute=every_5_min, run_at_startup=True),
     # arq.cron(notify_manga_chapters, minute=every_5_min),
 ]
 
@@ -109,16 +133,17 @@ def create_arq_redis() -> arq.ArqRedis:
 def generate_worker_settings() -> dict[str, Any]:
     redis_pool = create_arq_redis()
 
-    if not all([CFG.TWILIO_ENABLED, CFG.TWILIO_ACCOUNT_SID, CFG.TWILIO_AUTH_TOKEN]):
+    if not all((CFG.TWILIO_ENABLED, CFG.TWILIO_ACCOUNT_SID, CFG.TWILIO_AUTH_TOKEN)):
         twilio = None
     else:
         twilio = clients.TwilioClient(
-            account_sid=CFG.TWILIO_ACCOUNT_SID, auth_token=CFG.TWILIO_AUTH_TOKEN
+            account_sid=str(CFG.TWILIO_ACCOUNT_SID),
+            auth_token=str(CFG.TWILIO_AUTH_TOKEN),
         )
 
     ctx: ARQBaseContext = {
         "manga": clients.MangaClient(),
-        "db": Prisma(),
+        "db": prisma.Prisma(),
         "twilio": twilio,
         "redis": redis_pool,
     }

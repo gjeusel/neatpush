@@ -1,10 +1,12 @@
 import asyncio
+from typing import Any
 
 import arq
-import edgedb
 import typer
 import uvloop
 from arq.cli import watch_reload as run_worker_watch_reload
+
+import prisma
 
 from . import clients
 from .config import CFG
@@ -15,9 +17,8 @@ uvloop.install()
 
 loop = asyncio.get_event_loop()
 
-cli = typer.Typer()
 
-db = edgedb.create_client(dsn=CFG.EDGEDB_DSN, tls_security=CFG.EDGEDB_TLS_SECURITY)
+cli = typer.Typer()
 
 
 @cli.command("worker")
@@ -25,7 +26,7 @@ def run_worker(
     burst: bool = typer.Option(False, "--burst/--no-burst"),
     watch: bool = typer.Option(True, "--watch/--no-watch"),
 ):
-    kwargs = {"burst": burst}
+    kwargs: dict[str, Any] = {"burst": burst}
     worker_settings = generate_worker_settings()
 
     if watch:
@@ -36,7 +37,7 @@ def run_worker(
             )
         )
     else:
-        loop.run_until_complete(arq.run_worker(worker_settings, **kwargs))
+        arq.run_worker(worker_settings, **kwargs)
 
 
 task_cli = typer.Typer()
@@ -55,33 +56,49 @@ cli.add_typer(db_cli, name="db")
 
 @db_cli.command("seed")
 def seed():
-    # Cleanup
-    for t in ("MangaChapter", "Manga"):
-        db.query(f"DELETE {t}")
+    async def _seed():
+        db = prisma.Prisma()
+        await db.connect()
 
-    # Generate data
-    mangas = (
-        "one-piece",
-        "one-punch-man",
-        "berserk",
-        "omniscient-readers-viewpoint",
-        "overgeared-2020",
-        "tales-of-demons-and-gods",
-    )
-    for manga in mangas:
-        db.query("INSERT Manga { name := <str>$name }", name=manga)
+        # Cleanup
+        for t in (db.mangachapter, db.manga):
+            await t.delete_many()
+
+        # Generate data
+        mangas = (
+            "one-piece",
+            "one-punch-man",
+            "berserk",
+            "omniscient-readers-viewpoint",
+            "overgeared-2020",
+            "tales-of-demons-and-gods",
+        )
+        await db.manga.create_many(data=[{"name": name} for name in mangas])
+
+    loop.run_until_complete(_seed())
 
 
 @cli.command("msg")
 def send_message(message: str = "Hello"):
+    if not all(
+        (
+            CFG.TWILIO_ACCOUNT_SID,
+            CFG.TWILIO_SERVICE_SID,
+            CFG.TWILIO_AUTH_TOKEN,
+            CFG.TWILIO_NUM_TO,
+            CFG.TWILIO_NUM_FROM,
+        )
+    ):
+        raise RuntimeError("Missing configuration for TWILIO.")
+
     client = clients.TwilioClient(
-        account_sid=CFG.TWILIO_ACCOUNT_SID,
-        service_sid=CFG.TWILIO_SERVICE_SID,
-        auth_token=CFG.TWILIO_AUTH_TOKEN,
+        account_sid=str(CFG.TWILIO_ACCOUNT_SID),
+        service_sid=str(CFG.TWILIO_SERVICE_SID),
+        auth_token=str(CFG.TWILIO_AUTH_TOKEN),
     )
     loop.run_until_complete(
         client.send_whatsapp_msg(
-            num_to=CFG.TWILIO_NUM_TO, num_from=CFG.TWILIO_NUM_FROM, message=message
+            num_to=str(CFG.TWILIO_NUM_TO), num_from=CFG.TWILIO_NUM_FROM, message=message
         )
     )
 

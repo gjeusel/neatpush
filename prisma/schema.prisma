@@ -4,13 +4,25 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:./db.sqlite"
-    // url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model MangaChapter {
-  id         String @id @default(cuid())
-  num String
-  timestamp  DateTime @default(now())
+  id        String   @id @default(cuid())
+  num       String
+  timestamp DateTime @default(now())
+
+  url      String
+  notified Boolean @default(false)
+
+  mangaId String @unique
+  manga   Manga  @relation(fields: [mangaId], references: [id])
+}
+
+model Manga {
+  id   String @id @default(cuid())
+  name String @unique
+
+  chapters MangaChapter[]
 }

@@ -18,7 +18,7 @@ class Config(pydantic.BaseSettings):
     TWILIO_NUM_TO: str | None = None
 
     # DB:
-    DATABASE_URL: str = "sqlite:///db.sqlite"
+    DATABASE_URL: str  # need to be filled in .env -> used by prisma
 
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"  # pyright: ignore
@@ -37,7 +37,7 @@ class Config(pydantic.BaseSettings):
         env_file = ENV_FILE_PATH.as_posix()
 
 
-CFG = Config()
+CFG = Config()  # pyright: ignore
 
 
 structlog.configure(
