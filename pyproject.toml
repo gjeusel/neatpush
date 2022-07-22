@@ -35,9 +35,9 @@ dependencies = [
   'structlog',
   'rich',  # add exceptions ftm to structlog
 
-  # edgedb:
-  'edgedb==0.24.0a7',  # not yet available, in the meantime:
-  'edgeql-queries==0.4.0',  # https://github.com/nsidnev/edgeql-queries
+  # orm:
+  'sqlmodel==0.0.6',
+  'alembic',
 ]
 
 [project.optional-dependencies]

@@ -4,10 +4,13 @@ from pathlib import Path
 import pydantic
 import structlog
 
-ENV_FILE_PATH = Path(__file__).parents[1] / ".env"
+ROOT_DIR = Path(__file__).parents[1]
+ENV_FILE_PATH = ROOT_DIR / ".env"
 
 
 class Config(pydantic.BaseSettings):
+    DATABASE_URL: str = (ROOT_DIR / "sqlite.db").as_posix()
+
     # Twilio API
     # https://console.twilio.com/us1/develop/sms/settings/whatsapp-sandbox?frameUrl=%2Fconsole%2Fsms%2Fwhatsapp%2Fsandbox%3Fx-target-region%3Dus1  # noqa
     TWILIO_ENABLED: bool = False
@@ -16,10 +19,6 @@ class Config(pydantic.BaseSettings):
     TWILIO_AUTH_TOKEN: str | None = None
     TWILIO_NUM_FROM: str | None = None
     TWILIO_NUM_TO: str | None = None
-
-    # EDGEDB:
-    EDGEDB_DSN: str | None = None  # "edgedb://edgedb@localhost:10703/neatpush"
-    EDGEDB_TLS_SECURITY: str | None = None  # "insecure"
 
     # Redis cfg:
     REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"  # pyright: ignore
