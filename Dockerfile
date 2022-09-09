@@ -1,4 +1,4 @@
-FROM python:3.10.5-bullseye
+FROM python:3.10.6-bullseye
 
 RUN apt-get update \
   && apt-get install --no-install-recommends -y git gcc \
