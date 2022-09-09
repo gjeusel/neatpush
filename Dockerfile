@@ -1,9 +1,8 @@
-FROM python:3.10.6-bullseye
+FROM python:3.10.6-alpine
 
-RUN apt-get update \
-  && apt-get install --no-install-recommends -y git gcc \
+RUN apk add --no-cache --virtual gcc \
   && pip install --no-cache-dir --upgrade pip \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/cache/apk/*
 
 ADD pyproject.toml README.md  /requirements/
 ADD neatpush/__init__.py /requirements/neatpush/

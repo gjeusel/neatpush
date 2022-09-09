@@ -3,7 +3,6 @@ import asyncio
 import arq
 import edgedb
 import typer
-import uvloop
 from arq.cli import watch_reload as run_worker_watch_reload
 
 from . import clients
@@ -11,7 +10,11 @@ from .config import CFG
 from .constant import SRC_DIR
 from .tasks import create_arq_redis, generate_worker_settings
 
-uvloop.install()
+try:
+    import uvloop
+    uvloop.install()
+except ImportError:
+    pass
 
 loop = asyncio.get_event_loop()
 
