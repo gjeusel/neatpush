@@ -39,7 +39,7 @@ def run_worker(
             )
         )
     else:
-        loop.run_until_complete(arq.run_worker(worker_settings, **kwargs))
+        arq.run_worker(worker_settings, **kwargs)
 
 
 @cli.command("ping")

@@ -17,12 +17,12 @@ spec:
           image: guigze/neatpush:latest
           imagePullPolicy: Always
           command: ["neatpush", "worker", "--no-watch"]
-          livenessProbe:
-            exec:
-              command: ["neatpush", "ping"]
-          readinessProbe:
-            exec:
-              command: ["neatpush", "ping"]
+          # livenessProbe:
+          #   exec:
+          #     command: ["neatpush", "ping"]
+          # readinessProbe:
+          #   exec:
+          #     command: ["neatpush", "ping"]
           env:
             - name: REDIS_DSN
               value: "redis://neatpush-redis.hdd.svc.cluster.local:6379"
@@ -114,9 +114,6 @@ spec:
             - name: tcp
               containerPort: 5656
               protocol: TCP
-            - name: http
-              containerPort: 10703
-              protocol: TCP
           volumeMounts:
             - mountPath: /var/lib/edgedb
               name: neatpush-pv-psql
@@ -137,6 +134,8 @@ spec:
               value: debug
             - name: EDGEDB_SERVER_EXTRA_ARGS
               value: "--compiler-pool-mode on_demand"
+            - name: EDGEDB_SERVER_ADMIN_UI
+              value: "enabled"
 
 ---
 apiVersion: v1
@@ -153,20 +152,6 @@ spec:
     app: neatpush-edgedb
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: neatpush-edgedb-ui # *.neatpush-edgedb-ui.default.svc.cluster.local
-  labels:
-    app: neatpush-edgedb-ui
-spec:
-  ports:
-    - port: 10703
-      name: neatpush-edgedb-ui
-  selector:
-    app: neatpush-edgedb-ui
-
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -181,10 +166,10 @@ spec:
     - host: neatpush-edgedb.renewex.fun
       http:
         paths:
-          - path: /
+          - path: /ui
             pathType: ImplementationSpecific
             backend:
               service:
                 name: neatpush-edgedb-ui
                 port:
-                  number: 10703
+                  number: 5656
