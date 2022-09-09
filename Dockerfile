@@ -9,7 +9,6 @@ ADD pyproject.toml README.md  /requirements/
 ADD neatpush/__init__.py /requirements/neatpush/
 
 RUN pip install /requirements --no-cache-dir
-RUN pip install git+https://github.com/edgedb/edgedb-python@14f8a32ca415fee1219d62343cfbca239eaa12d1
 
 ENV APP_DIR /neatpush
 WORKDIR $APP_DIR

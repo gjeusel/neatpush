@@ -1,0 +1,167 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neatpush-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neatpush-worker
+  template:
+    metadata:
+      labels:
+        app: neatpush-worker
+    spec:
+      containers:
+        - name: neatpush
+          image: guigze/neatpush:latest
+          command: ["neatpush", "worker", "--no-watch"]
+          livenessProbe:
+            exec:
+              command: ["neatpush", "ping"]
+          readinessProbe:
+            exec:
+              command: ["neatpush", "ping"]
+          env:
+            - name: REDIS_DSN
+              value: redis://redis:6379
+            - name: EDGEDB_DSN
+              value: edgedb://edgedb:5656/edgedb
+            - name: EDGEDB_TLS_SECURITY
+              value: insecure
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neatpush-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neatpush-redis
+  template:
+    metadata:
+      labels:
+        app: neatpush-redis
+    spec:
+      containers:
+        - name: neatpush
+          image: redis:7.0.4-bullseye
+          ports:
+            - name: tcp
+              containerPort: 6379
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command: ["redis-cli", "ping"]
+          readinessProbe:
+            exec:
+              command: ["redis-cli", "ping"]
+          env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: yes
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neatpush-redis # *.neatpush-redis.default.svc.cluster.local
+  labels:
+    app: neatpush-redis
+spec:
+  ports:
+    - port: 6379
+      name: neatpush-redis
+  selector:
+    app: neatpush-redis
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: neatpush-pv-psql
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neatpush-edgedb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neatpush-edgedb
+  template:
+    metadata:
+      labels:
+        app: neatpush-edgedb
+    spec:
+      volumes:
+        - name: neatpush-pv-psql
+          persistentVolumeClaim:
+            claimName: neatpush-pv-psql
+      containers:
+        - name: neatpush
+          image: edgedb/edgedb:2.1
+          ports:
+            - name: tcp
+              containerPort: 5656
+              protocol: TCP
+            - name: http
+              containerPort: 10703
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/edgedb/data
+              name: neatpush-pv-psql
+          env:
+            - name: EDGEDB_SERVER_DATABASE
+              value: edgedb
+            - name: EDGEDB_SERVER_USER
+              value: edgedb
+            - name: EDGEDB_SERVER_PASSWORD
+              value: edgedb
+            - name: EDGEDB_CLIENT_TLS_SECURITY
+              value: insecure
+            - name: EDGEDB_SERVER_SECURITY
+              value: insecure_dev_mode
+            - name: EDGEDB_SERVER_DEFAULT_AUTH_METHOD
+              value: Trust
+            - name: EDGEDB_DOCKER_LOG_LEVEL
+              value: debug
+            - name: EDGEDB_SERVER_EXTRA_ARGS
+              value: "--compiler-pool-mode on_demand"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neatpush-edgedb # *.neatpush-edgedb.default.svc.cluster.local
+  labels:
+    app: neatpush-edgedb
+spec:
+  ports:
+    - port: 5656
+      name: neatpush-edgedb
+  selector:
+    app: neatpush-edgedb
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neatpush-edgedb-ui # *.neatpush-edgedb-ui.default.svc.cluster.local
+  labels:
+    app: neatpush-edgedb-ui
+spec:
+  ports:
+    - port: 10703
+      name: neatpush-edgedb-ui
+  selector:
+    app: neatpush-edgedb-ui

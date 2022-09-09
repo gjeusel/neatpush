@@ -39,6 +39,12 @@ def run_worker(
         loop.run_until_complete(arq.run_worker(worker_settings, **kwargs))
 
 
+@cli.command("ping")
+def ping():
+    worker_settings = generate_worker_settings()
+    arq.worker.check_health(worker_settings)
+
+
 task_cli = typer.Typer()
 cli.add_typer(task_cli, name="task")
 
