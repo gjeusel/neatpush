@@ -1,8 +1,4 @@
-FROM python:3.10.6-alpine
-
-RUN apk add --no-cache --virtual gcc \
-  && pip install --no-cache-dir --upgrade pip \
-  && rm -rf /var/cache/apk/*
+FROM python:3.10.6
 
 ADD pyproject.toml README.md  /requirements/
 ADD neatpush/__init__.py /requirements/neatpush/
