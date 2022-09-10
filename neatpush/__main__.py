@@ -4,6 +4,7 @@ import arq
 import edgedb
 import typer
 from arq.cli import watch_reload as run_worker_watch_reload
+from arq.worker import async_check_health
 
 from . import clients
 from .config import CFG
@@ -12,11 +13,11 @@ from .tasks import create_arq_redis, generate_worker_settings
 
 try:
     import uvloop
+
     uvloop.install()
 except ImportError:
     pass
 
-loop = asyncio.get_event_loop()
 
 cli = typer.Typer()
 
@@ -33,7 +34,7 @@ def run_worker(
 
     if watch:
         kwargs["watch"] = SRC_DIR.as_posix()
-        loop.run_until_complete(
+        asyncio.run(
             run_worker_watch_reload(
                 path=SRC_DIR.as_posix(), worker_settings=worker_settings
             )
@@ -44,8 +45,8 @@ def run_worker(
 
 @cli.command("ping")
 def ping():
-    worker_settings = generate_worker_settings()
-    arq.worker.check_health(worker_settings)
+    redis_settings = arq.connections.RedisSettings.from_dsn(str(CFG.REDIS_DSN))
+    asyncio.run(async_check_health(redis_settings))
 
 
 task_cli = typer.Typer()
@@ -55,7 +56,7 @@ cli.add_typer(task_cli, name="task")
 @task_cli.command("enqueue")
 def task_enqueue(name: str):
     redis = create_arq_redis()
-    loop.run_until_complete(redis.enqueue_job(name))
+    asyncio.run(redis.enqueue_job(name))
 
 
 db_cli = typer.Typer()
@@ -88,7 +89,7 @@ def send_message(message: str = "Hello"):
         service_sid=CFG.TWILIO_SERVICE_SID,
         auth_token=CFG.TWILIO_AUTH_TOKEN,
     )
-    loop.run_until_complete(
+    asyncio.run(
         client.send_whatsapp_msg(
             num_to=CFG.TWILIO_NUM_TO, num_from=CFG.TWILIO_NUM_FROM, message=message
         )

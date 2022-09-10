@@ -9,6 +9,6 @@ ENV APP_DIR /neatpush
 WORKDIR $APP_DIR
 ADD . $APP_DIR
 
-RUN pip install --editable .
+# RUN pip install --editable .
 
 CMD ["python", "-c", "import neatpush; print(neatpush.__version__)"]

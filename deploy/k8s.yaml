@@ -17,12 +17,12 @@ spec:
           image: guigze/neatpush:latest
           imagePullPolicy: Always
           command: ["neatpush", "worker", "--no-watch"]
-          # livenessProbe:
-          #   exec:
-          #     command: ["neatpush", "ping"]
-          # readinessProbe:
-          #   exec:
-          #     command: ["neatpush", "ping"]
+          livenessProbe:
+            exec:
+              command: ["neatpush", "ping"]
+          readinessProbe:
+            exec:
+              command: ["neatpush", "ping"]
           env:
             - name: REDIS_DSN
               value: "redis://neatpush-redis.hdd.svc.cluster.local:6379"
