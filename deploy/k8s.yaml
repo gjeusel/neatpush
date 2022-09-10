@@ -18,9 +18,13 @@ spec:
           imagePullPolicy: Always
           command: ["neatpush", "worker", "--no-watch"]
           livenessProbe:
+            timeoutSeconds: 5
+            periodSeconds: 30
             exec:
               command: ["neatpush", "ping"]
           readinessProbe:
+            timeoutSeconds: 5
+            periodSeconds: 30
             exec:
               command: ["neatpush", "ping"]
           env:
