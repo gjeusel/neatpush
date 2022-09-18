@@ -1,4 +1,4 @@
-FROM python:3.10.6
+FROM python:3.10.7
 
 ADD pyproject.toml README.md  /requirements/
 ADD neatpush/__init__.py /requirements/neatpush/

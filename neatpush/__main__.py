@@ -18,6 +18,7 @@ try:
 except ImportError:
     pass
 
+loop = asyncio.get_event_loop()
 
 cli = typer.Typer()
 
@@ -34,7 +35,7 @@ def run_worker(
 
     if watch:
         kwargs["watch"] = SRC_DIR.as_posix()
-        asyncio.run(
+        loop.run_until_complete(
             run_worker_watch_reload(
                 path=SRC_DIR.as_posix(), worker_settings=worker_settings
             )
@@ -56,7 +57,7 @@ cli.add_typer(task_cli, name="task")
 @task_cli.command("enqueue")
 def task_enqueue(name: str):
     redis = create_arq_redis()
-    asyncio.run(redis.enqueue_job(name))
+    loop.run_until_complete(redis.enqueue_job(name))
 
 
 db_cli = typer.Typer()
@@ -89,7 +90,7 @@ def send_message(message: str = "Hello"):
         service_sid=CFG.TWILIO_SERVICE_SID,
         auth_token=CFG.TWILIO_AUTH_TOKEN,
     )
-    asyncio.run(
+    loop.run_until_complete(
         client.send_whatsapp_msg(
             num_to=CFG.TWILIO_NUM_TO, num_from=CFG.TWILIO_NUM_FROM, message=message
         )
