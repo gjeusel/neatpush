@@ -35,7 +35,7 @@ spec:
               containerPort: 5656
               protocol: TCP
           volumeMounts:
-            - mountPath: /var/lib/edgedb
+            - mountPath: /var/lib/edgedb/data
               name: neatpush-pv-psql
           env:
             - name: EDGEDB_SERVER_DATABASE
@@ -47,7 +47,7 @@ spec:
             - name: EDGEDB_SERVER_INSTANCE_NAME
               value: "HypeDrivenDev"
             - name: EDGEDB_SERVER_DATADIR
-              value: "/var/lib/edgedb/data"
+              value: "/var/lib/edgedb/data/edgedb-neatpush-data"
             - name: EDGEDB_CLIENT_TLS_SECURITY
               value: "insecure"
             - name: EDGEDB_SERVER_SECURITY
