@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neatpush-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neatpush-worker
+  template:
+    metadata:
+      labels:
+        app: neatpush-worker
+    spec:
+      containers:
+        - name: neatpush
+          image: guigze/neatpush:latest
+          imagePullPolicy: Always
+          command: ["neatpush", "worker", "--no-watch"]
+          livenessProbe:
+            timeoutSeconds: 10
+            periodSeconds: 30
+            exec:
+              command: ["neatpush", "ping"]
+          readinessProbe:
+            timeoutSeconds: 10
+            periodSeconds: 30
+            exec:
+              command: ["neatpush", "ping"]
+          env:
+            - name: REDIS_DSN
+              value: "redis://neatpush-redis.hdd.svc.cluster.local:6379"
+            # - name: EDGEDB_DSN
+            #   value: "edgedb://neatpush-edgedb.hdd.svc.cluster.local:5656/edgedb"
+            - name: EDGEDB_TLS_SECURITY
+              value: "insecure"
+          envFrom:
+            - secretRef:
+                name: worker-env-secrets

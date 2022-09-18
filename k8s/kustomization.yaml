@@ -1,0 +1,18 @@
+resources:
+  - edgedb.yaml
+  - redis.yaml
+  - worker.yaml
+
+secretGenerator:
+  - name: worker-env-secrets
+    envs:
+      - .env.worker
+  - name: edgedb-env-secrets
+    envs:
+      - .env.edgedb
+
+generatorOptions:
+  labels:
+    type: kustomize-generated
+  annotations:
+    note: kustomize-generated
