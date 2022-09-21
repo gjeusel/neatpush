@@ -25,3 +25,11 @@ docker push guigze/neatpush:latest
 
 kubectl apply -k k8s/
 ```
+
+
+## Buggy Edgedb
+
+- Might complain port is already used on restart:
+```bash
+launchctl remove edgedb-server-neatpush
+```

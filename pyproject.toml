@@ -1,9 +1,9 @@
 [build-system]
-requires = ["hatchling>=1.5.0"]
+requires = ["hatchling>=1.5.0", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [tool.hatch]
-version = { path = 'neatpush/__init__.py' }
+version = { source = 'vcs' }
 
 [project]
 name = "neatpush"
