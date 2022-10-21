@@ -27,7 +27,7 @@ dependencies = [
 
   # task queue:
   'arq==0.24',
-  'aioredis==2.0.1',
+  # 'aioredis==2.0.1',
   'orjson',
   'watchgod',        # watch file change for arq
 
@@ -36,8 +36,7 @@ dependencies = [
   'rich',      # add exceptions ftm to structlog
 
   # edgedb:
-  'edgedb==0.24.0',        # not yet available, in the meantime:
-  'edgeql-queries==0.4.0', # https://github.com/nsidnev/edgeql-queries
+  'edgedb==1.0.*',
 ]
 
 optional-dependencies = { prod = [

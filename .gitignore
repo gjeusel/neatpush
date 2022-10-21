@@ -120,3 +120,4 @@ prof/
 # docker-compose
 edgedb-data
 postgres-data
+*_edgeql.py
