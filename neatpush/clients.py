@@ -29,7 +29,7 @@ class MangaChapter:
 class MangaClient(httpx.AsyncClient):
     async def get_neatmanga_latest_releases(self, manga: str) -> list[MangaChapter]:
         url = f"https://neatmanga.com/manga/{manga}/ajax/chapters"
-        resp = await self.post(url)
+        resp = await self.post(url, follow_redirects=True)
 
         if resp.status_code == 404:
             raise MangaNotFound(manga)

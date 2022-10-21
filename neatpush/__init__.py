@@ -1,6 +1,8 @@
 """NeatPush - wanted notificiations and nothing else."""
 
-__version__ = "0.0.1"
+import importlib
+
+__version__ = importlib.metadata.version("neatpush")
 
 
 import warnings

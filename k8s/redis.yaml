@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neatpush-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neatpush-redis
+  template:
+    metadata:
+      labels:
+        app: neatpush-redis
+    spec:
+      containers:
+        - name: neatpush
+          image: redis:7.0.4-bullseye
+          ports:
+            - name: tcp
+              containerPort: 6379
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command: ["redis-cli", "ping"]
+          readinessProbe:
+            exec:
+              command: ["redis-cli", "ping"]
+          env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neatpush-redis # *.neatpush-redis.default.svc.cluster.local
+  labels:
+    app: neatpush-redis
+spec:
+  ports:
+    - port: 6379
+      name: neatpush-redis
+  selector:
+    app: neatpush-redis

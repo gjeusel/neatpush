@@ -3,15 +3,20 @@ import asyncio
 import arq
 import edgedb
 import typer
-import uvloop
 from arq.cli import watch_reload as run_worker_watch_reload
+from arq.worker import async_check_health
 
 from . import clients
 from .config import CFG
 from .constant import SRC_DIR
 from .tasks import create_arq_redis, generate_worker_settings
 
-uvloop.install()
+try:
+    import uvloop
+
+    uvloop.install()
+except ImportError:
+    pass
 
 loop = asyncio.get_event_loop()
 
@@ -36,7 +41,13 @@ def run_worker(
             )
         )
     else:
-        loop.run_until_complete(arq.run_worker(worker_settings, **kwargs))
+        arq.run_worker(worker_settings, **kwargs)
+
+
+@cli.command("ping")
+def ping():
+    redis_settings = arq.connections.RedisSettings.from_dsn(str(CFG.REDIS_DSN))
+    asyncio.run(async_check_health(redis_settings))
 
 
 task_cli = typer.Typer()
