@@ -22,7 +22,7 @@ class MangaNotFound(Exception):
 @dataclass
 class MangaChapter:
     num: str
-    timestamp: datetime
+    timestamp: datetime.datetime
     url: str
 
 
@@ -38,10 +38,14 @@ class MangaClient(httpx.AsyncClient):
         soup = Soup(resp.text)
 
         raw = soup.find("li", attrs={"class": "wp-manga-chapter"})
+        if not isinstance(raw, list):
+            raise ValueError(f"Failed to parse html for {manga}.")
 
         results: list[MangaChapter] = []
         for e in raw:
             timestamp = dateparser.parse(e.find("i").text)
+            if not timestamp:
+                raise ValueError(f"Could not find timestamp for {manga} on {e}")
             num = re.sub(r"Chapter ", "", e.find("a").text)
             results.append(
                 MangaChapter(

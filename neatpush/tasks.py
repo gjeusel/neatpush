@@ -6,12 +6,10 @@ from typing import Any, TypedDict
 
 import arq
 import edgedb
-import orjson
 import structlog
 
-from . import clients
+from . import clients, queries
 from .config import CFG
-from .edbqueries import queries
 
 log = structlog.get_logger()
 
@@ -33,9 +31,17 @@ class ARQContext(ARQBaseContext):
 async def fetch_manga_chapters(ctx: ARQContext, name: str) -> list[uuid.UUID]:
     chapters = await ctx["manga"].get_neatmanga_latest_releases(name)
 
-    new_chapters = await queries.manga_chapters_upsert(
-        ctx["edb"], chapters=orjson.dumps(chapters).decode("utf-8"), name=name
-    )
+    promises = [
+        queries.upsert_chapter(
+            client=ctx["edb"],
+            num=chap.num,
+            timestamp=chap.timestamp,
+            url=chap.url,
+            manga_name=name,
+        )
+        for chap in chapters
+    ]
+    new_chapters = await asyncio.gather(*promises)
     if new_chapters:
         log.info("new-chapter", manga=name, number=len(new_chapters))
 
@@ -54,7 +60,9 @@ async def notify_manga_chapters(ctx: ARQContext) -> None:
         if CFG.TWILIO_ENABLED:
             message = f"*{chapter.name}* - New Chapter {chapter.num} !\n{chapter.url}"
             await ctx["twilio"].send_whatsapp_msg(
-                message=message, num_from=CFG.TWILIO_NUM_FROM, num_to=CFG.TWILIO_NUM_TO
+                message=message,
+                num_from=str(CFG.TWILIO_NUM_FROM),
+                num_to=str(CFG.TWILIO_NUM_TO),
             )
 
     notified_qry = """
@@ -83,7 +91,7 @@ async def manga_job(ctx: ARQContext) -> None:
 
     if uuid_chapters:
         log.info("new-chapters", number=len(uuid_chapters))
-        ctx["redis"].enqueue_job(notify_manga_chapters.__name__)
+        await ctx["redis"].enqueue_job(notify_manga_chapters.__name__)
 
 
 WORKER_FUNCTIONS = [manga_job, fetch_manga_chapters, notify_manga_chapters]
@@ -91,7 +99,7 @@ WORKER_FUNCTIONS = [manga_job, fetch_manga_chapters, notify_manga_chapters]
 every_5_min = tuple(range(0, 60, 5))  # "*/5" not working in arq
 
 CRON_JOBS = [
-    arq.cron(manga_job, minute=every_5_min),
+    arq.cron(manga_job, minute=every_5_min),  # type: ignore
     # arq.cron(notify_manga_chapters, minute=every_5_min),
 ]
 
@@ -126,7 +134,8 @@ def generate_worker_settings() -> dict[str, Any]:
             dsn=CFG.EDGEDB_DSN, tls_security=CFG.EDGEDB_TLS_SECURITY
         ),
         "twilio": clients.TwilioClient(
-            account_sid=CFG.TWILIO_ACCOUNT_SID, auth_token=CFG.TWILIO_AUTH_TOKEN
+            account_sid=str(CFG.TWILIO_ACCOUNT_SID),
+            auth_token=str(CFG.TWILIO_AUTH_TOKEN),
         ),
     }
 

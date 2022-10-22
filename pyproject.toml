@@ -29,7 +29,7 @@ dependencies = [
   'arq==0.24',
   # 'aioredis==2.0.1',
   'orjson',
-  'watchgod',        # watch file change for arq
+  'watchgod', # watch file change for arq
 
   # logs:
   'structlog',
@@ -39,22 +39,31 @@ dependencies = [
   'edgedb==1.0.*',
 ]
 
-optional-dependencies = { prod = [
-  'uvloop',
-], dev = [
+optional-dependencies = { prod = ['uvloop'], dev = [
+  # stubs
+  "types-dateparser",
+  "types-pytz",
+  #
+  # local dev confort
   'watchfiles',
-], qa = [
-  'flake8',
-  'flake8-bugbear',
-  'flake8-builtins',
-  'black',
-  'isort',
-  'pre-commit',
-], test = [
-  'coverage>=5.0.3',
-  'pytest',
-  'pytest-asyncio',
+  "pdbpp",
+  "ptpython",
+  "devtools[pygments]",
+  #
+  # testing libs:
   'vcrpy',
+  "pytest>=7.1",
+  'pytest-asyncio',
+  "pytest-cov[toml]",
+  "pytest-sugar",
+  "pytest-mock",
+  #
+  # code quality:
+  "pre-commit==2.20.*",
+  "mypy==0.971",
+  "black==22.10.*",
+  "isort[colors]==5.10.*",
+  "ruff",                  # replacement of flake8 & associated
 ] }
 
 [project.urls]
@@ -65,31 +74,70 @@ Source = 'https://github.com/gjeusel/neatpush'
 [project.scripts]
 neatpush = "neatpush.__main__:cli"
 
-[tool.isort]
-line_length = 88
-profile = 'black'
+
+[tool.ruff]
+line-length = 120
 
 [tool.black]
+color = true
 line-length = 88
-include = '\.pyi?$'
-exclude = '''
-(
-  /(
-    \.git
-    | \.mypy_cache
-    | \.pytest_cache
-    | htmlcov
-    | build
-  )/
-)
-'''
 
-[tool.pyright]
-typeCheckingMode = "strict"
-reportMissingImports = true
-reportMissingTypeStubs = false
-reportIncompatibleVariableOverride = false # class Config in pydantic
-reportPrivateImportUsage = false           # arq.ArqRedis (not in __all__)
+[tool.isort]
+line_length = 88
+profile = "black"
+skip_gitignore = false
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+combine_as_imports = true
+color_output = true
 
 [tool.pytest.ini_options]
-asyncio_mode = 'auto'
+testpaths = "tests"
+filterwarnings = ["error"]
+asyncio_mode = "auto"      # when using pytest-asyncio
+# addopts = "--cov --no-cov-on-fail"
+timeout = 10 # maximum seconds duration for a unittest
+
+[tool.coverage]
+run = { source = ["neatpush"], branch = true }
+report = { precision = 2, exclude_lines = [
+  "pragma: no cover",
+  "raise NotImplementedError",
+  "raise NotImplemented",
+  "if TYPE_CHECKING:",
+  "@overload",
+], sort = "Miss" }
+
+[tool.mypy]
+python_version = "3.10"
+plugins = ["pydantic.mypy"]
+
+strict = true
+warn_return_any = false
+show_error_codes = true
+
+# permissives rules:
+implicit_reexport = true # no need to specify __all__ in modules
+# follow_imports = "silent"  # does not work when using dmypy https://github.com/python/mypy/issues/9475
+ignore_missing_imports = true # ignore missing stubs
+
+[tool.pydantic-mypy]
+warn_untyped_fields = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*", "docs.*"]
+disallow_subclassing_any = false
+disallow_untyped_defs = false
+disallow_untyped_calls = false
+disallow_incomplete_defs = false
+disallow_untyped_decorators = false
+
+[[tool.mypy.overrides]]
+module = "neatpush.queries" # generated queries from edgedb
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "neatpush.clients" # weird typing from gazpacho
+ignore_errors = true
+# disable_error_code = ['union-attr']  # is not a per-module flag

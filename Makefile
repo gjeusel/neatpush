@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := all
-isort = isort neatpush tests
+isort = isort --gitignore neatpush tests
 black = black neatpush tests
 
 .PHONY: install
@@ -22,6 +22,15 @@ lint:
 .PHONY: mypy
 mypy:
 	mypy neatpush
+
+.PHONY: codegen
+codegen:
+	edgedb-py --file
+	mv generated_async_edgeql.py neatpush/queries.py
+
+.PHONY: watch-codegen
+watch-codegen:
+	watchfiles "make codegen" neatpush/queries/
 
 .PHONY: test
 test:
