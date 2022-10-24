@@ -1,10 +1,10 @@
-# NeatPush
-
 <p align="center">
   <a href="https://mangapill.com">
-    <img src="https://mangapill.com/static/favicon/android-chrome-512x512.png" alt="MangaPill">
+    <img src="https://mangapill.com/static/favicon/android-chrome-512x512.png" alt="MangaPill" width="100" height="100">
   </a>
 </p>
+
+# NeatPush
 
 ## Local Dev
 
@@ -26,10 +26,10 @@ docker push guigze/neatpush:latest
 kubectl apply -k k8s/
 ```
 
-
 ## Buggy Edgedb
 
 - Might complain port is already used on restart:
+
 ```bash
 launchctl remove edgedb-server-neatpush
 ```
