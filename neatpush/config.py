@@ -4,38 +4,12 @@ from pathlib import Path
 import pydantic
 import structlog
 
-ENV_FILE_PATH = Path(__file__).parents[1] / ".env"
+PKG_DIR = Path(__file__).parents[1]
 
 
 class Config(pydantic.BaseSettings):
-    # Twilio API
-    # https://console.twilio.com/us1/develop/sms/settings/whatsapp-sandbox?frameUrl=%2Fconsole%2Fsms%2Fwhatsapp%2Fsandbox%3Fx-target-region%3Dus1  # noqa
-    TWILIO_ENABLED: bool = False
-    TWILIO_ACCOUNT_SID: str | None = None
-    TWILIO_SERVICE_SID: str | None = None
-    TWILIO_AUTH_TOKEN: str | None = None
-    TWILIO_NUM_FROM: str | None = None
-    TWILIO_NUM_TO: str | None = None
-
-    # EDGEDB:
-    EDGEDB_DSN: str | None = None  # "edgedb://edgedb@localhost:10703/neatpush"
-    EDGEDB_TLS_SECURITY: str = "insecure"
-
-    # Redis cfg:
-    REDIS_DSN: pydantic.RedisDsn = "redis://localhost:6379"  # type: ignore[assignment]
-    REDIS_TIMEOUT: int = 60
-    # REDIS_MINCONN: int = 1
-    REDIS_MAXCONN: int = 10
-
-    # Arq config:
-    ARQ_MAX_JOBS: int = 10
-    ARQ_JOB_TIMEOUT: int = 60  # seconds
-    ARQ_KEEP_RESULT: int = 60  # seconds
-    ARQ_MAX_TRIES: int = 5
-    ARQ_HEALTH_CHECK_INTERVAL: int = 60  # seconds
-
     class Config:
-        env_file = ENV_FILE_PATH.as_posix()
+        env_file = (PKG_DIR / ".env").as_posix()
 
 
 CFG = Config()
