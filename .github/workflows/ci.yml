@@ -230,7 +230,7 @@ jobs:
 
       - name: Build docs site
         run: >
-          mkdocs gh-deploy
+          mkdocs gh-deploy --force
           --message "upt(doc): ${{ github.sha }}"
           --remote-branch=gh-pages
 
