@@ -25,6 +25,7 @@ class Config(pydantic.BaseSettings):
 
     # SMS
     SEND_SMS: bool = False
+    SMS_MAX_LEN: int = 200
 
     NEATMANGA: list[str] = pydantic.Field(default_factory=list)
     MANGAPILL: list[str] = pydantic.Field(default_factory=list)
