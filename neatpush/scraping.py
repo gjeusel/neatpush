@@ -10,11 +10,11 @@ from gazpacho import Soup
 tz = pytz.timezone("Europe/Brussels")
 
 
-class ScrappingError(Exception):
+class ScrapingError(Exception):
     pass
 
 
-class MangaNotFound(ScrappingError):
+class MangaNotFound(ScrapingError):
     def __init__(self, name: str):
         self.name = name
         super().__init__(name)
@@ -41,7 +41,7 @@ def scrap_neatmanga(name: str) -> list[MangaChapter]:
     if resp.status_code == 404:
         raise MangaNotFound(name)
     elif not resp.is_success:
-        raise ScrappingError(f"Failed to scrap {name}: {resp.text}")
+        raise ScrapingError(f"Failed to scrap {name}: {resp.text}")
 
     resp.raise_for_status()
     soup = Soup(resp.text)
@@ -111,7 +111,7 @@ def scrap_toonily(name: str) -> list[MangaChapter]:
             continue
 
         assert a.attrs
-        url = a.attrs["href"]
+        href = a.attrs["href"]
         num = a.text.split("chapter-")[-1].strip()
 
         if e.find("i"):
@@ -126,7 +126,7 @@ def scrap_toonily(name: str) -> list[MangaChapter]:
             MangaChapter(
                 num=num,
                 timestamp=timestamp.astimezone(tz),
-                url=url,
+                url=href,
             )
         )
 
