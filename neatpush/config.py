@@ -16,11 +16,12 @@ class Config(pydantic.BaseSettings):
     AWS_SNS_TOPIC: str = ""
 
     # Scaleway
-    SCW_ACCESS_KEY: str = ""
-    SCW_SECRET_KEY: SecretStr = SecretStr("")
-    SCW_REGION_NAME: str = "fr-par"
-    SCW_BUCKET_ENDPOINT_URL: str = ""
-    SCW_BUCKET: str = "messy"
+    # limitation: can't start with "SCW" (https://www.scaleway.com/en/docs/compute/containers/reference-content/containers-limitations/)
+    MY_SCW_ACCESS_KEY: str = ""
+    MY_SCW_SECRET_KEY: SecretStr = SecretStr("")
+    MY_SCW_REGION_NAME: str = "fr-par"
+    MY_SCW_BUCKET_ENDPOINT_URL: str = ""
+    MY_SCW_BUCKET: str = "messy"
 
     # SMS
     SEND_SMS: bool = False

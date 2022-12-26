@@ -46,14 +46,14 @@ DEFAULT_BUCKET_KEY = "neatpush.json"
 
 def _get_s3_client() -> Any:
     session = boto3.Session(
-        aws_access_key_id=CFG.SCW_ACCESS_KEY,
-        aws_secret_access_key=CFG.SCW_SECRET_KEY.get_secret_value(),
-        region_name=CFG.SCW_REGION_NAME,
+        aws_access_key_id=CFG.MY_SCW_ACCESS_KEY,
+        aws_secret_access_key=CFG.MY_SCW_SECRET_KEY.get_secret_value(),
+        region_name=CFG.MY_SCW_REGION_NAME,
     )
 
     return session.client(
         "s3",
-        endpoint_url=CFG.SCW_BUCKET_ENDPOINT_URL,
+        endpoint_url=CFG.MY_SCW_BUCKET_ENDPOINT_URL,
     )
 
 
@@ -61,7 +61,7 @@ def retrieve_cached_mangas(s3: Any, *, path: str = DEFAULT_BUCKET_KEY) -> list[M
     tmp_filepath = tempfile.gettempdir() + "/tmp.json"
 
     try:
-        s3.download_file(Bucket=CFG.SCW_BUCKET, Key=path, Filename=tmp_filepath)
+        s3.download_file(Bucket=CFG.MY_SCW_BUCKET, Key=path, Filename=tmp_filepath)
     except BotoClientError as err:
         if "Not Found" in str(err):
             return []
@@ -80,7 +80,7 @@ def save_cached_mangas(
     s3: Any, *, mangas: list[Manga], path: str = DEFAULT_BUCKET_KEY
 ) -> None:
     contents = orjson.dumps([m.dict() for m in mangas])
-    s3.put_object(Bucket=CFG.SCW_BUCKET, Key=path, Body=contents)
+    s3.put_object(Bucket=CFG.MY_SCW_BUCKET, Key=path, Body=contents)
 
 
 def get_new_chapters() -> dict[str, list[MangaChapter]]:
