@@ -22,6 +22,9 @@ class Config(pydantic.BaseSettings):
     SCW_BUCKET_ENDPOINT_URL: str = ""
     SCW_BUCKET: str = "messy"
 
+    # SMS
+    SEND_SMS: bool = False
+
     NEATMANGA: list[str] = pydantic.Field(default_factory=list)
     MANGAPILL: list[str] = pydantic.Field(default_factory=list)
     TOONILY: list[str] = pydantic.Field(default_factory=list)

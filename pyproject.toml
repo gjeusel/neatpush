@@ -30,7 +30,7 @@ dependencies = [
   "typer",
   "structlog",
   "uvicorn",
-  "pydantic<2.0.0",
+  "pydantic[dotenv]<2.0.0",
   "boto3",
   "orjson",
 
@@ -106,8 +106,9 @@ unfixable = [
   # "F401",  # import but unused
 ]
 
-per-file-ignores = { "botwit/__main__.py" = [
+per-file-ignores = { "neatpush/__main__.py" = [
   "UP007", # use "| None" operator instead of Optional
+  "B008",  # Do not perform function call `typer.Option` in arguments default
 ] }
 
 [tool.ruff.flake8-import-conventions.aliases]

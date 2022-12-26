@@ -1,16 +1,11 @@
-import asyncio
-import logging
-import sys
 from bdb import BdbQuit
 from typing import Any, Optional
 
-import boto3
 import structlog
 import typer
 import uvicorn
 
 from . import manga
-from .config import CFG
 from .notify import send_sms
 
 logger = structlog.getLogger("neatpush")

@@ -3,13 +3,19 @@ from starlette.requests import Request
 from starlette.responses import PlainTextResponse
 from starlette.routing import Route
 
-from .sync_memo import sync_twitter_to_notion
-# from .manga import 
+from neatpush.config import CFG
+
+from . import manga, notify
 
 
 async def homepage(request: Request) -> PlainTextResponse:
-    # sync_twitter_to_notion()
-    return PlainTextResponse("gut")
+    map_new_chapters = manga.get_new_chapters()
+    message = notify.format_new_chapters(map_new_chapters)
+
+    if CFG.SEND_SMS:
+        notify.send_sms(message)
+
+    return PlainTextResponse(message)
 
 
 routes = [Route("/", endpoint=homepage, methods=["POST", "GET"])]

@@ -1,12 +1,10 @@
 import enum
 import tempfile
-from dataclasses import dataclass
-from typing import Any, Sequence
+from typing import Any
 
 import boto3
 import orjson
 import structlog
-from boto3.exceptions import S3TransferFailedError
 from botocore.exceptions import ClientError as BotoClientError
 from pydantic import BaseModel, validator
 
@@ -16,16 +14,6 @@ from . import scraping
 from .scraping import MangaChapter
 
 logger = structlog.getLogger(__name__)
-
-# https://neatmanga.com/manga/overgeared/2020/
-
-# https://toonily.net/manga/tales-of-demons-and-gods/
-
-# https://mangapill.com/manga/5284/omniscient-reader
-# https://mangapill.com/manga/2085/jujutsu-kaisen
-# https://mangapill.com/manga/2/one-piece
-# https://mangapill.com/manga/723/chainsaw-man
-# https://mangapill.com/manga/3262/one-punch-man
 
 
 class MangaSource(str, enum.Enum):
@@ -97,15 +85,15 @@ def save_cached_mangas(
 
 def get_new_chapters() -> dict[str, list[MangaChapter]]:
     map_manga_source = {
-        MangaSource.neatmanga: CFG.NEATMANGA,
-        MangaSource.mangapill: CFG.MANGAPILL,
         MangaSource.toonily: CFG.TOONILY,
+        MangaSource.mangapill: CFG.MANGAPILL,
+        MangaSource.neatmanga: CFG.NEATMANGA,
     }
 
     map_source_fn = {
         MangaSource.neatmanga: scraping.scrap_neatmanga,
-        MangaSource.mangapill: None,
-        MangaSource.toonily: None,
+        MangaSource.mangapill: scraping.scrap_mangapill,
+        MangaSource.toonily: scraping.scrap_toonily,
     }
 
     s3 = _get_s3_client()
@@ -122,20 +110,34 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
 
         for name in names:
             logger.info(f"Checking new chapters for {name} in {source.value}...")
-            chapters = scrap_fn(name)
+            try:
+                chapters = scrap_fn(name)
+            except Exception:
+                logger.exception(
+                    f"Failed to fetch new chapters for {name} in {source.value}."
+                )
+                continue
 
             if name not in map_name_cache:
-                # Handle case when manga is not yet in the cache.
-                # We don't want to notify anything there.
                 updated_mangas.append(
                     Manga(name=name, source=source, chapters=chapters)
                 )
+                logger.info(f"First time checking chapters for {name}. Just caching.")
                 continue
 
             manga = map_name_cache[name]
             new_chapters = sorted(
                 set(chapters) - set(manga.chapters), key=lambda x: x.timestamp
             )
+
+            if not new_chapters:
+                logger.info(f"Found nothing new chapter for {name}.")
+            else:
+                logger.info(
+                    f"Found new chapters for {name}: "
+                    + ", ".join(chap.num for chap in new_chapters)
+                )
+
             to_notify_map[name] = new_chapters
             updated_mangas.append(
                 Manga(
