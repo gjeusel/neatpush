@@ -85,9 +85,9 @@ def save_cached_mangas(
 
 def get_new_chapters() -> dict[str, list[MangaChapter]]:
     map_manga_source = {
-        MangaSource.toonily: CFG.TOONILY,
         MangaSource.mangapill: CFG.MANGAPILL,
         MangaSource.neatmanga: CFG.NEATMANGA,
+        MangaSource.toonily: CFG.TOONILY,
     }
 
     map_source_fn = {

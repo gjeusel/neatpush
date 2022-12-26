@@ -29,10 +29,14 @@ scripts = { neatpush = "neatpush.__main__:cli" }
 dependencies = [
   "typer",
   "structlog",
-  "uvicorn",
+
   "pydantic[dotenv]<2.0.0",
   "boto3",
   "orjson",
+
+  # webserver
+  "starlette",
+  "uvicorn",
 
   # scraping:
   "httpx",

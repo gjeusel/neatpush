@@ -12,7 +12,7 @@ async def homepage(request: Request) -> PlainTextResponse:
     map_new_chapters = manga.get_new_chapters()
     message = notify.format_new_chapters(map_new_chapters)
 
-    if CFG.SEND_SMS:
+    if CFG.SEND_SMS and message:
         notify.send_sms(message)
 
     return PlainTextResponse(message)
