@@ -1,0 +1,703 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '0'
+      host:
+      - neatmanga.com
+      user-agent:
+      - python-httpx/0.23.1
+    method: POST
+    uri: https://neatmanga.com/manga/overgeared/ajax/chapters
+  response:
+    content: "<div class=\"page-content-listing single-page\">\n\t<a href=\"#\" title=\"Change
+      Order\" class=\"btn-reverse-order\">Reverse Order <i class=\"icon ion-md-swap\"></i></a>\n\t<div
+      class=\"listing-chapters_wrap cols-1  show-more\">\n\n\t\t\n\t\t\t\n\t\t\t<ul
+      class=\"main version-chap no-volumn\">\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-160/\">\n\t\t\t\t\t\t\t\t\tChapter
+      160\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      day ago</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-159/\">\n\t\t\t\t\t\t\t\t\tChapter
+      159\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>17
+      December 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-158/\">\n\t\t\t\t\t\t\t\t\tChapter
+      158\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>12
+      December 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-157/\">\n\t\t\t\t\t\t\t\t\tChapter
+      157\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>2
+      December 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-156/\">\n\t\t\t\t\t\t\t\t\tChapter
+      156\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>27
+      November 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-155/\">\n\t\t\t\t\t\t\t\t\tChapter
+      155\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      November 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-154/\">\n\t\t\t\t\t\t\t\t\tChapter
+      154\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>14
+      November 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-153/\">\n\t\t\t\t\t\t\t\t\tChapter
+      153\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      November 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-152/\">\n\t\t\t\t\t\t\t\t\tChapter
+      152\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      November 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-151/\">\n\t\t\t\t\t\t\t\t\tChapter
+      151\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>28
+      October 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-150/\">\n\t\t\t\t\t\t\t\t\tChapter
+      150\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      October 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-149/\">\n\t\t\t\t\t\t\t\t\tChapter
+      149\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>20
+      October 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-148/\">\n\t\t\t\t\t\t\t\t\tChapter
+      148\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>8
+      October 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-147/\">\n\t\t\t\t\t\t\t\t\tChapter
+      147\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>28
+      September 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-146/\">\n\t\t\t\t\t\t\t\t\tChapter
+      146\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      September 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-145/\">\n\t\t\t\t\t\t\t\t\tChapter
+      145\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>18
+      September 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-144/\">\n\t\t\t\t\t\t\t\t\tChapter
+      144\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>5
+      September 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-143/\">\n\t\t\t\t\t\t\t\t\tChapter
+      143\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      September 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-142/\">\n\t\t\t\t\t\t\t\t\tChapter
+      142\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>22
+      August 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-141/\">\n\t\t\t\t\t\t\t\t\tChapter
+      141\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>18
+      August 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-140/\">\n\t\t\t\t\t\t\t\t\tChapter
+      140\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      August 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-139/\">\n\t\t\t\t\t\t\t\t\tChapter
+      139\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      August 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-138/\">\n\t\t\t\t\t\t\t\t\tChapter
+      138\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>26
+      July 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-137/\">\n\t\t\t\t\t\t\t\t\tChapter
+      137\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      July 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-136/\">\n\t\t\t\t\t\t\t\t\tChapter
+      136\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>19
+      July 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-135/\">\n\t\t\t\t\t\t\t\t\tChapter
+      135\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      July 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-134/\">\n\t\t\t\t\t\t\t\t\tChapter
+      134\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      July 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-133/\">\n\t\t\t\t\t\t\t\t\tChapter
+      133\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>25
+      June 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-132/\">\n\t\t\t\t\t\t\t\t\tChapter
+      132\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>22
+      June 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-131/\">\n\t\t\t\t\t\t\t\t\tChapter
+      131\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>22
+      June 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-130/\">\n\t\t\t\t\t\t\t\t\tChapter
+      130\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>22
+      June 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-129/\">\n\t\t\t\t\t\t\t\t\tChapter
+      129\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      June 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-128/\">\n\t\t\t\t\t\t\t\t\tChapter
+      128\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>20
+      May 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-127/\">\n\t\t\t\t\t\t\t\t\tChapter
+      127\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>10
+      May 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-126/\">\n\t\t\t\t\t\t\t\t\tChapter
+      126\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>9
+      May 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-125/\">\n\t\t\t\t\t\t\t\t\tChapter
+      125\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      April 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-124/\">\n\t\t\t\t\t\t\t\t\tChapter
+      124\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      April 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-123/\">\n\t\t\t\t\t\t\t\t\tChapter
+      123\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>12
+      April 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-122/\">\n\t\t\t\t\t\t\t\t\tChapter
+      122\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>5
+      April 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-121-shells-memories/\">\n\t\t\t\t\t\t\t\t\tChapter
+      121 - Shell's Memories - Fixed\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+      class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>12 April 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-120/\">\n\t\t\t\t\t\t\t\t\tChapter
+      120\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      March 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-119/\">\n\t\t\t\t\t\t\t\t\tChapter
+      119\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>16
+      March 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-118/\">\n\t\t\t\t\t\t\t\t\tChapter
+      118\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>8
+      March 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-117/\">\n\t\t\t\t\t\t\t\t\tChapter
+      117\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>25
+      February 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-116/\">\n\t\t\t\t\t\t\t\t\tChapter
+      116\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>18
+      February 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-115/\">\n\t\t\t\t\t\t\t\t\tChapter
+      115\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      February 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-114/\">\n\t\t\t\t\t\t\t\t\tChapter
+      114\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      February 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-113/\">\n\t\t\t\t\t\t\t\t\tChapter
+      113\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      February 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-112/\">\n\t\t\t\t\t\t\t\t\tChapter
+      112\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      January 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-111/\">\n\t\t\t\t\t\t\t\t\tChapter
+      111\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      January 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-110/\">\n\t\t\t\t\t\t\t\t\tChapter
+      110\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      January 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-109/\">\n\t\t\t\t\t\t\t\t\tChapter
+      109\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>3
+      January 2022</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-108/\">\n\t\t\t\t\t\t\t\t\tChapter
+      108\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      December 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-107/\">\n\t\t\t\t\t\t\t\t\tChapter
+      107\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>6
+      December 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-106/\">\n\t\t\t\t\t\t\t\t\tChapter
+      106\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>26
+      November 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-105/\">\n\t\t\t\t\t\t\t\t\tChapter
+      105\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>20
+      November 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-104/\">\n\t\t\t\t\t\t\t\t\tChapter
+      104\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      November 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-103/\">\n\t\t\t\t\t\t\t\t\tChapter
+      103\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>3
+      November 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-102/\">\n\t\t\t\t\t\t\t\t\tChapter
+      102\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>27
+      October 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-101/\">\n\t\t\t\t\t\t\t\t\tChapter
+      101\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>18
+      October 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-100/\">\n\t\t\t\t\t\t\t\t\tChapter
+      100\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>10
+      October 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-99/\">\n\t\t\t\t\t\t\t\t\tChapter
+      99\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      October 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-98/\">\n\t\t\t\t\t\t\t\t\tChapter
+      98\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      September 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-97/\">\n\t\t\t\t\t\t\t\t\tChapter
+      97\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>20
+      September 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-96/\">\n\t\t\t\t\t\t\t\t\tChapter
+      96\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>11
+      September 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-95/\">\n\t\t\t\t\t\t\t\t\tChapter
+      95\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>9
+      September 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-94/\">\n\t\t\t\t\t\t\t\t\tChapter
+      94\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      September 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-93/\">\n\t\t\t\t\t\t\t\t\tChapter
+      93\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>22
+      August 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-92/\">\n\t\t\t\t\t\t\t\t\tChapter
+      92\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>22
+      August 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-91/\">\n\t\t\t\t\t\t\t\t\tChapter
+      91\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      August 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-90/\">\n\t\t\t\t\t\t\t\t\tChapter
+      90\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>31
+      July 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-89/\">\n\t\t\t\t\t\t\t\t\tChapter
+      89\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      July 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-88/\">\n\t\t\t\t\t\t\t\t\tChapter
+      88\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>17
+      July 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-87/\">\n\t\t\t\t\t\t\t\t\tChapter
+      87\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>13
+      July 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-86/\">\n\t\t\t\t\t\t\t\t\tChapter
+      86\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      July 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-85/\">\n\t\t\t\t\t\t\t\t\tChapter
+      85\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>26
+      June 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-84/\">\n\t\t\t\t\t\t\t\t\tChapter
+      84\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>19
+      June 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-83/\">\n\t\t\t\t\t\t\t\t\tChapter
+      83\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>14
+      June 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-82/\">\n\t\t\t\t\t\t\t\t\tChapter
+      82\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      June 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-81/\">\n\t\t\t\t\t\t\t\t\tChapter
+      81\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>29
+      May 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-80/\">\n\t\t\t\t\t\t\t\t\tChapter
+      80\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      May 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-79/\">\n\t\t\t\t\t\t\t\t\tChapter
+      79\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>15
+      May 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-78/\">\n\t\t\t\t\t\t\t\t\tChapter
+      78\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>8
+      May 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-77/\">\n\t\t\t\t\t\t\t\t\tChapter
+      77\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>1
+      May 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-76/\">\n\t\t\t\t\t\t\t\t\tChapter
+      76\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      April 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-75/\">\n\t\t\t\t\t\t\t\t\tChapter
+      75\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>17
+      April 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-74/\">\n\t\t\t\t\t\t\t\t\tChapter
+      74\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>10
+      April 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-73/\">\n\t\t\t\t\t\t\t\t\tChapter
+      73\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>3
+      April 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-72/\">\n\t\t\t\t\t\t\t\t\tChapter
+      72\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>26
+      March 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-71/\">\n\t\t\t\t\t\t\t\t\tChapter
+      71\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>20
+      March 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-70/\">\n\t\t\t\t\t\t\t\t\tChapter
+      70\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>13
+      March 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-69/\">\n\t\t\t\t\t\t\t\t\tChapter
+      69\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>6
+      March 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-68/\">\n\t\t\t\t\t\t\t\t\tChapter
+      68\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>6
+      March 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-67/\">\n\t\t\t\t\t\t\t\t\tChapter
+      67\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      February 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-66/\">\n\t\t\t\t\t\t\t\t\tChapter
+      66\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>13
+      February 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-65/\">\n\t\t\t\t\t\t\t\t\tChapter
+      65\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      February 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-64/\">\n\t\t\t\t\t\t\t\t\tChapter
+      64\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      February 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-63/\">\n\t\t\t\t\t\t\t\t\tChapter
+      63\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      January 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-62/\">\n\t\t\t\t\t\t\t\t\tChapter
+      62\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      January 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-61/\">\n\t\t\t\t\t\t\t\t\tChapter
+      61\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      June 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-60/\">\n\t\t\t\t\t\t\t\t\tChapter
+      60\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      January 2021</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-59/\">\n\t\t\t\t\t\t\t\t\tChapter
+      59\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>26
+      December 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-58/\">\n\t\t\t\t\t\t\t\t\tChapter
+      58\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>18
+      December 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-57/\">\n\t\t\t\t\t\t\t\t\tChapter
+      57\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>13
+      December 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-56/\">\n\t\t\t\t\t\t\t\t\tChapter
+      56\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>4
+      December 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-55/\">\n\t\t\t\t\t\t\t\t\tChapter
+      55\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>28
+      November 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-54/\">\n\t\t\t\t\t\t\t\t\tChapter
+      54\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>21
+      November 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-53/\">\n\t\t\t\t\t\t\t\t\tChapter
+      53\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>13
+      November 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-52/\">\n\t\t\t\t\t\t\t\t\tChapter
+      52\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      November 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-51/\">\n\t\t\t\t\t\t\t\t\tChapter
+      51\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>31
+      October 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-50/\">\n\t\t\t\t\t\t\t\t\tChapter
+      50\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      October 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-49/\">\n\t\t\t\t\t\t\t\t\tChapter
+      49\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>17
+      October 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-48/\">\n\t\t\t\t\t\t\t\t\tChapter
+      48\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>9
+      October 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-47/\">\n\t\t\t\t\t\t\t\t\tChapter
+      47\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>5
+      October 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-46/\">\n\t\t\t\t\t\t\t\t\tChapter
+      46\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>25
+      September 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-45/\">\n\t\t\t\t\t\t\t\t\tChapter
+      45\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>19
+      September 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-44/\">\n\t\t\t\t\t\t\t\t\tChapter
+      44\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>19
+      September 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-43/\">\n\t\t\t\t\t\t\t\t\tChapter
+      43\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>19
+      September 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-42/\">\n\t\t\t\t\t\t\t\t\tChapter
+      42\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>29
+      August 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-41/\">\n\t\t\t\t\t\t\t\t\tChapter
+      41\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>29
+      August 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-40/\">\n\t\t\t\t\t\t\t\t\tChapter
+      40\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>14
+      August 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-39/\">\n\t\t\t\t\t\t\t\t\tChapter
+      39\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>7
+      August 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-38/\">\n\t\t\t\t\t\t\t\t\tChapter
+      38\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>3
+      August 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-37/\">\n\t\t\t\t\t\t\t\t\tChapter
+      37\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>24
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-36/\">\n\t\t\t\t\t\t\t\t\tChapter
+      36\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-35/\">\n\t\t\t\t\t\t\t\t\tChapter
+      35\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-34/\">\n\t\t\t\t\t\t\t\t\tChapter
+      34\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-33/\">\n\t\t\t\t\t\t\t\t\tChapter
+      33\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-32/\">\n\t\t\t\t\t\t\t\t\tChapter
+      32\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-31/\">\n\t\t\t\t\t\t\t\t\tChapter
+      31\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-30/\">\n\t\t\t\t\t\t\t\t\tChapter
+      30\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-29/\">\n\t\t\t\t\t\t\t\t\tChapter
+      29\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-28/\">\n\t\t\t\t\t\t\t\t\tChapter
+      28\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-27/\">\n\t\t\t\t\t\t\t\t\tChapter
+      27\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-26/\">\n\t\t\t\t\t\t\t\t\tChapter
+      26\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-25/\">\n\t\t\t\t\t\t\t\t\tChapter
+      25\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-24/\">\n\t\t\t\t\t\t\t\t\tChapter
+      24\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-23/\">\n\t\t\t\t\t\t\t\t\tChapter
+      23\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-22/\">\n\t\t\t\t\t\t\t\t\tChapter
+      22\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-21/\">\n\t\t\t\t\t\t\t\t\tChapter
+      21\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-20/\">\n\t\t\t\t\t\t\t\t\tChapter
+      20\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-19/\">\n\t\t\t\t\t\t\t\t\tChapter
+      19\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-18/\">\n\t\t\t\t\t\t\t\t\tChapter
+      18\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-17/\">\n\t\t\t\t\t\t\t\t\tChapter
+      17\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-16/\">\n\t\t\t\t\t\t\t\t\tChapter
+      16\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-15/\">\n\t\t\t\t\t\t\t\t\tChapter
+      15\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-14/\">\n\t\t\t\t\t\t\t\t\tChapter
+      14\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-13/\">\n\t\t\t\t\t\t\t\t\tChapter
+      13\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-12/\">\n\t\t\t\t\t\t\t\t\tChapter
+      12\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-11/\">\n\t\t\t\t\t\t\t\t\tChapter
+      11\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-10/\">\n\t\t\t\t\t\t\t\t\tChapter
+      10\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-9/\">\n\t\t\t\t\t\t\t\t\tChapter
+      9\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-8/\">\n\t\t\t\t\t\t\t\t\tChapter
+      8\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-7/\">\n\t\t\t\t\t\t\t\t\tChapter
+      7\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-6/\">\n\t\t\t\t\t\t\t\t\tChapter
+      6\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-5/\">\n\t\t\t\t\t\t\t\t\tChapter
+      5\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-4/\">\n\t\t\t\t\t\t\t\t\tChapter
+      4\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-3/\">\n\t\t\t\t\t\t\t\t\tChapter
+      3\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-2/\">\n\t\t\t\t\t\t\t\t\tChapter
+      2\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-1/\">\n\t\t\t\t\t\t\t\t\tChapter
+      1\t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<li
+      class=\"wp-manga-chapter    \">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<a
+      href=\"https://neatmanga.com/manga/overgeared/2020/chapter-0/\">\n\t\t\t\t\t\t\t\t\tChapter
+      \t\t\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"chapter-release-date\">\n\t\t\t\t\t\t\t\t\t\t<i>23
+      July 2020</i>\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t</ul>\n\n\t\t\t\n\t\t\n\t\t\t\t\t<div
+      class=\"c-chapter-readmore\">\n\t\t\t\t<span class=\"btn btn-link chapter-readmore\">\n\t\t\t\t\tShow
+      more \t\t\t\t</span>\n\t\t\t</div>\n\t\t\n\t</div>\n</div>"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 77f8b0e4de6ad2f1-CDG
+      Cache-Control:
+      - max-age=3600
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Mon, 26 Dec 2022 09:11:47 GMT
+      Expires:
+      - Mon, 26 Dec 2022 10:11:47 GMT
+      NEL:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=B0I9Y3UaGNhk%2Fan5JcjGsDz9uuaFufExfnmJEd9gBU2m79EUroQcBHjI0X6XhLwBKAnbClQa32qF2qY1zw4FGBkU09oDNWH9vldcJf%2F7%2FpkeDtj8jYkOmPy0U%2FLg1F%2Bc"}],"group":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - X-Forwarded-Proto,Accept-Encoding,User-Agent
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

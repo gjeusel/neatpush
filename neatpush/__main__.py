@@ -1,100 +1,50 @@
-import asyncio
+from bdb import BdbQuit
+from typing import Any, Optional
 
-import arq
-import edgedb
+import structlog
 import typer
-from arq.cli import watch_reload as run_worker_watch_reload
-from arq.worker import async_check_health
+import uvicorn
 
-from . import clients
-from .config import CFG
-from .constant import SRC_DIR
-from .tasks import create_arq_redis, generate_worker_settings
+from . import manga
+from .notify import send_sms
 
-try:
-    import uvloop
-
-    uvloop.install()
-except ImportError:
-    pass
-
-loop = asyncio.get_event_loop()
+logger = structlog.getLogger("neatpush")
 
 cli = typer.Typer()
 
-db = edgedb.create_client(dsn=CFG.EDGEDB_DSN, tls_security=CFG.EDGEDB_TLS_SECURITY)
+
+@cli.command("sms")
+def _send_sms(message: str = typer.Option("Hello", help="SMS content.")) -> None:
+    response = send_sms(message)
+    logger.info("SMS Sent.", payload=response)
 
 
-@cli.command("worker")
-def run_worker(
-    burst: bool = typer.Option(False, "--burst/--no-burst"),
-    watch: bool = typer.Option(True, "--watch/--no-watch"),
-):
-    kwargs = {"burst": burst}
-    worker_settings = generate_worker_settings()
+@cli.command("serve")
+def run_server(
+    port: int = typer.Option(8000, help="port to use"),
+    host: str = typer.Option("127.0.0.1", help="host to use"),
+    watch: Optional[bool] = typer.Option(None, "--watch/--no-watch"),
+) -> None:
+    kwargs: dict[str, Any] = {
+        "port": port,
+        "host": host,
+        "app": "neatpush.app:app",
+        "reload": watch,
+    }
+    uvicorn.run(**kwargs)
 
-    if watch:
-        kwargs["watch"] = SRC_DIR.as_posix()
-        loop.run_until_complete(
-            run_worker_watch_reload(
-                path=SRC_DIR.as_posix(), worker_settings=worker_settings
-            )
-        )
+
+@cli.command("run")
+def run(debug: Optional[bool] = typer.Option(None, "--debug/--no-debug")) -> None:
+    if debug:
+        try:
+            manga.get_new_chapters()
+        except BdbQuit:
+            pass
+        except Exception:
+            __import__("pdb").post_mortem()  # POSTMORTEM
     else:
-        arq.run_worker(worker_settings, **kwargs)
-
-
-@cli.command("ping")
-def ping():
-    redis_settings = arq.connections.RedisSettings.from_dsn(str(CFG.REDIS_DSN))
-    asyncio.run(async_check_health(redis_settings))
-
-
-task_cli = typer.Typer()
-cli.add_typer(task_cli, name="task")
-
-
-@task_cli.command("enqueue")
-def task_enqueue(name: str):
-    redis = create_arq_redis()
-    loop.run_until_complete(redis.enqueue_job(name))
-
-
-db_cli = typer.Typer()
-cli.add_typer(db_cli, name="db")
-
-
-@db_cli.command("seed")
-def seed():
-    # Cleanup
-    for t in ("MangaChapter", "Manga"):
-        db.query(f"DELETE {t}")
-
-    # Generate data
-    mangas = (
-        "one-piece",
-        "one-punch-man",
-        "berserk",
-        "omniscient-readers-viewpoint",
-        "overgeared-2020",
-        "tales-of-demons-and-gods",
-    )
-    for manga in mangas:
-        db.query("INSERT Manga { name := <str>$name }", name=manga)
-
-
-@cli.command("msg")
-def send_message(message: str = "Hello"):
-    client = clients.TwilioClient(
-        account_sid=CFG.TWILIO_ACCOUNT_SID,
-        service_sid=CFG.TWILIO_SERVICE_SID,
-        auth_token=CFG.TWILIO_AUTH_TOKEN,
-    )
-    loop.run_until_complete(
-        client.send_whatsapp_msg(
-            num_to=CFG.TWILIO_NUM_TO, num_from=CFG.TWILIO_NUM_FROM, message=message
-        )
-    )
+        manga.get_new_chapters()
 
 
 if __name__ == "__main__":
