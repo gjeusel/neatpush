@@ -4,7 +4,7 @@ from starlette.requests import Request
 from starlette.responses import PlainTextResponse
 from starlette.routing import Route
 
-from neatpush.config import CFG
+from neatpush.config import CFG, setup_logging
 
 from . import manga, notify
 
@@ -28,3 +28,8 @@ async def homepage(request: Request) -> PlainTextResponse:
 routes = [Route("/", endpoint=homepage, methods=["POST", "GET"])]
 
 app = Starlette(debug=True, routes=routes)
+
+
+@app.on_event("startup")
+def _setup_logs_for_app() -> None:
+    setup_logging()

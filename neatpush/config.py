@@ -38,7 +38,7 @@ class Config(pydantic.BaseSettings):
 CFG = Config()
 
 
-def setup_logging() -> None:
+def setup_logging(level: str = "info") -> None:
     structlog.configure(
         processors=[
             structlog.processors.add_log_level,
@@ -47,7 +47,9 @@ def setup_logging() -> None:
             structlog.processors.TimeStamper(fmt="iso", utc=False),
             structlog.dev.ConsoleRenderer(sort_keys=False),
         ],
-        wrapper_class=structlog.make_filtering_bound_logger(logging.NOTSET),
+        wrapper_class=structlog.make_filtering_bound_logger(
+            getattr(logging, level.upper())
+        ),
         context_class=dict,
         logger_factory=structlog.PrintLoggerFactory(),
     )

@@ -89,6 +89,7 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
         MangaSource.neatmanga: CFG.NEATMANGA,
         MangaSource.toonily: CFG.TOONILY,
     }
+    logger.info("Checking for new chapters", **map_manga_source)
 
     map_source_fn = {
         MangaSource.neatmanga: scraping.scrap_neatmanga,
@@ -109,7 +110,7 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
             continue
 
         for name in names:
-            logger.info(f"Checking new chapters for {name} in {source.value}...")
+            logger.debug(f"Checking new chapters for {name} in {source.value}...")
             try:
                 chapters = scrap_fn(name)
             except Exception:
@@ -131,7 +132,7 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
             )
 
             if not new_chapters:
-                logger.info(f"Found nothing new chapter for {name}.")
+                logger.debug(f"Found nothing new chapter for {name}.")
             else:
                 logger.info(
                     f"Found new chapters for {name}: "
