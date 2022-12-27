@@ -1,4 +1,5 @@
 import logging
+import sys
 from pathlib import Path
 
 import pydantic
@@ -41,11 +42,12 @@ CFG = Config()
 def setup_logging(level: str = "info") -> None:
     structlog.configure(
         processors=[
+            structlog.contextvars.merge_contextvars,
             structlog.processors.add_log_level,
             structlog.processors.StackInfoRenderer(),
             structlog.dev.set_exc_info,
             structlog.processors.TimeStamper(fmt="iso", utc=False),
-            structlog.dev.ConsoleRenderer(sort_keys=False),
+            structlog.dev.ConsoleRenderer(sort_keys=False, colors=sys.stderr.isatty()),
         ],
         wrapper_class=structlog.make_filtering_bound_logger(
             getattr(logging, level.upper())
