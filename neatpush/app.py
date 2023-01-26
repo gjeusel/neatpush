@@ -1,3 +1,5 @@
+import logging
+
 import structlog
 from starlette.applications import Starlette
 from starlette.requests import Request
@@ -7,6 +9,18 @@ from starlette.routing import Route
 from neatpush.config import CFG, setup_logging
 
 from . import manga, notify
+
+# Handle uvicorn loggings:
+# - forward uvicorn error logs into structlog
+# - silence uvicorn access logs
+
+for _logger_name in ["uvicorn", "uvicorn.error"]:
+    # Clear the log handlers for uvicorn loggers, and enable propagation
+    # so the messages are caught by our root logger and formatted correctly
+    # by structlog
+    _logger = logging.getLogger(_logger_name)
+    _logger.handlers.clear()
+    _logger.propagate = True
 
 logger = structlog.getLogger(__name__)
 

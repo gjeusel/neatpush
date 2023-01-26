@@ -89,7 +89,7 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
         MangaSource.neatmanga: CFG.NEATMANGA,
         MangaSource.toonily: CFG.TOONILY,
     }
-    logger.info("Checking for new chapters", **map_manga_source)
+    logger.debug("Checking for new chapters", **map_manga_source)
 
     map_source_fn = {
         MangaSource.neatmanga: scraping.scrap_neatmanga,
