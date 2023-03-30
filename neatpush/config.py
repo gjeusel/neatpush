@@ -55,3 +55,11 @@ def setup_logging(level: str = "info") -> None:
         context_class=dict,
         logger_factory=structlog.PrintLoggerFactory(),
     )
+
+    for _logger_name in ["uvicorn", "uvicorn.error"]:
+        # Clear the log handlers for uvicorn loggers, and enable propagation
+        # so the messages are caught by our root logger and formatted correctly
+        # by structlog
+        _logger = logging.getLogger(_logger_name)
+        _logger.handlers.clear()
+        _logger.propagate = True
