@@ -25,7 +25,7 @@ class MangaNotFound(ScrapingError):
 
 @dataclass(repr=False, frozen=True)
 class MangaChapter:
-    url: str = field()
+    url: str = field(compare=False)
     num: str
     timestamp: datetime = field(compare=False)  # __hash__ is based on __eq__
 
