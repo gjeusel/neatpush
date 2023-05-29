@@ -1,22 +1,14 @@
-from bdb import BdbQuit
 from typing import Any, Optional
 
 import structlog
 import typer
 import uvicorn
 
-from . import manga
-from .notify import send_sms
+from .app import check_new_chapters
 
 logger = structlog.getLogger("neatpush")
 
 cli = typer.Typer()
-
-
-@cli.command("sms")
-def _send_sms(message: str = typer.Option("Hello", help="SMS content.")) -> None:
-    response = send_sms(message)
-    logger.info("SMS Sent.", payload=response)
 
 
 @cli.command("serve")
@@ -35,16 +27,8 @@ def run_server(
 
 
 @cli.command("run")
-def run(debug: Optional[bool] = typer.Option(None, "--debug/--no-debug")) -> None:
-    if debug:
-        try:
-            manga.get_new_chapters()
-        except BdbQuit:
-            pass
-        except Exception:
-            __import__("pdb").post_mortem()  # POSTMORTEM
-    else:
-        manga.get_new_chapters()
+def run() -> None:
+    check_new_chapters()
 
 
 if __name__ == "__main__":

@@ -144,7 +144,10 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
                 Manga(
                     name=name,
                     source=source,
-                    chapters=set(manga.chapters) | set(chapters),
+                    chapters=sorted(
+                        set(manga.chapters) | set(chapters),
+                        key=lambda x: x.timestamp,
+                    ),
                 )
             )
 

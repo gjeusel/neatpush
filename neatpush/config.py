@@ -2,6 +2,7 @@ import logging
 import sys
 from pathlib import Path
 
+import apprise
 import pydantic
 import structlog
 from pydantic.types import SecretStr
@@ -28,9 +29,46 @@ class Config(pydantic.BaseSettings):
     SEND_SMS: bool = False
     SMS_MAX_LEN: int = 200
 
+    # Simple Push
+    SIMPLE_PUSH_KEY: SecretStr = SecretStr("")
+
     NEATMANGA: list[str] = pydantic.Field(default_factory=list)
     MANGAPILL: list[str] = pydantic.Field(default_factory=list)
     TOONILY: list[str] = pydantic.Field(default_factory=list)
+
+    _notif_manager: apprise.Apprise = pydantic.PrivateAttr()
+
+    @property
+    def notif_manager(self) -> apprise.Apprise:
+        if not hasattr(self, "_notif_manager"):
+            manager = apprise.Apprise()
+
+            has_aws_creds = all(
+                [
+                    self.AWS_ACCESS_KEY,
+                    self.AWS_SECRET_KEY,
+                    self.AWS_REGION_NAME,
+                    self.AWS_SNS_TOPIC,
+                ]
+            )
+            if self.SEND_SMS and has_aws_creds:
+                sns = "sns://{access_key}/{secret_key}/{region}/{topic}".format(
+                    access_key=self.AWS_ACCESS_KEY,
+                    secret_key=self.AWS_SECRET_KEY.get_secret_value(),
+                    region=self.AWS_REGION_NAME,
+                    topic=self.AWS_SNS_TOPIC,
+                )
+                manager.add(sns, tag="sms")
+
+            if self.SIMPLE_PUSH_KEY:
+                manager.add(
+                    f"spush://{self.SIMPLE_PUSH_KEY.get_secret_value()}",
+                    tag="always",
+                )
+
+            self._notif_manager = manager
+
+        return self._notif_manager
 
     class Config:
         env_file = (PKG_DIR / ".env").as_posix()
