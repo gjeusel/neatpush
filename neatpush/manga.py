@@ -130,6 +130,10 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
             new_chapters = sorted(
                 set(chapters) - set(manga.chapters), key=lambda x: x.timestamp
             )
+            all_chapters = sorted(
+                set(manga.chapters) | set(chapters),
+                key=lambda x: x.timestamp,
+            )
 
             if not new_chapters:
                 logger.debug(f"Found nothing new chapter for {name}.")
@@ -138,17 +142,10 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
                     f"Found new chapters for {name}: "
                     + ", ".join(chap.num for chap in new_chapters)
                 )
+                to_notify_map[name] = new_chapters
 
-            to_notify_map[name] = new_chapters
             updated_mangas.append(
-                Manga(
-                    name=name,
-                    source=source,
-                    chapters=sorted(
-                        set(manga.chapters) | set(chapters),
-                        key=lambda x: x.timestamp,
-                    ),
-                )
+                Manga(name=name, source=source, chapters=all_chapters)
             )
 
     save_cached_mangas(s3, mangas=updated_mangas)
