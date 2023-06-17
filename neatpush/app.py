@@ -47,12 +47,9 @@ def check_new_chapters() -> dict[str, list[MangaChapter]]:
     if map_new_chapters:
         title, body = _format_notif_infos(map_new_chapters)
 
-        tag = "all" if (CFG.SEND_SMS and len(body) < CFG.SMS_MAX_LEN) else "always"
-
         CFG.notif_manager.notify(
             title=title,
             body=body,
-            tag=tag,
             body_format=NotifyFormat.MARKDOWN,
         )
 
