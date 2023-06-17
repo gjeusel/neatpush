@@ -11,8 +11,8 @@ PKG_DIR = Path(__file__).parents[1]
 
 
 class Config(pydantic.BaseSettings):
-    # Scaleway
-    # limitation: can't start with "SCW" (https://www.scaleway.com/en/docs/compute/containers/reference-content/containers-limitations/)
+    # Scaleway limitation: env variable can't start with "SCW" (reserved)
+    # https://www.scaleway.com/en/docs/compute/containers/reference-content/containers-limitations/
     CLOUD_ACCESS_KEY: str = ""
     CLOUD_SECRET_KEY: SecretStr = SecretStr("")
 
@@ -20,10 +20,6 @@ class Config(pydantic.BaseSettings):
     BUCKET_ENDPOINT_URL: str = "https://s3.fr-par.scw.cloud"
     BUCKET_NAME: str = "messy"
     BUCKET_KEY: str = "neatpush.json"
-
-    # SMS
-    SEND_SMS: bool = False
-    SMS_MAX_LEN: int = 200
 
     # Simple Push
     SIMPLE_PUSH_KEY: SecretStr = SecretStr("")
