@@ -9,6 +9,8 @@ from pydantic.types import SecretStr
 
 PKG_DIR = Path(__file__).parents[1]
 
+logger = structlog.getLogger()
+
 
 class Config(pydantic.BaseSettings):
     # Scaleway limitation: env variable can't start with "SCW" (reserved)
@@ -40,9 +42,11 @@ class Config(pydantic.BaseSettings):
 
             if secret := self.SIMPLE_PUSH_KEY.get_secret_value():
                 manager.add(f"spush://{secret}", tag="always")
+                logger.info("Simple Push has been set.")
 
             if secret := self.TECHULUS_PUSH_KEY.get_secret_value():
                 manager.add(f"push://{secret}/", tag="always")
+                logger.info("Technulus has been set.")
 
             self._notif_manager = manager
 

@@ -45,6 +45,7 @@ def check_new_chapters() -> dict[str, list[MangaChapter]]:
     map_new_chapters = manga.get_new_chapters()
 
     if map_new_chapters:
+        logger.info("notifying", **map_new_chapters)
         title, body = _format_notif_infos(map_new_chapters)
 
         CFG.notif_manager.notify(
