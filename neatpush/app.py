@@ -76,4 +76,4 @@ app = Starlette(debug=True, routes=routes)
 
 @app.on_event("startup")
 def _setup_logs_for_app() -> None:
-    setup_logging()
+    setup_logging(level=CFG.LOG_LEVEL)

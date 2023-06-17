@@ -1,5 +1,3 @@
-from typing import Any, Optional
-
 import structlog
 import typer
 import uvicorn
@@ -17,7 +15,7 @@ cli = typer.Typer()
 def run_server(
     port: int = typer.Option(8000, help="port to use"),
     host: str = typer.Option("127.0.0.1", help="host to use"),
-    watch: Optional[bool] = typer.Option(None, "--watch/--no-watch"),
+    watch: bool = typer.Option(False, "--watch/--no-watch"),
 ) -> None:
 
     log_config = LOGGING_CONFIG | {
@@ -32,14 +30,13 @@ def run_server(
         },
     }
 
-    kwargs: dict[str, Any] = {
-        "port": port,
-        "host": host,
-        "app": "neatpush.app:app",
-        "reload": watch,
-        "log_config": log_config,
-    }
-    uvicorn.run(**kwargs)
+    uvicorn.run(
+        app="neatpush.app:app",
+        port=port,
+        host=host,
+        reload=watch,
+        log_config=log_config,
+    )
 
 
 @cli.command("run")

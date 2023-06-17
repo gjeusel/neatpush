@@ -1,6 +1,7 @@
 import logging
 import sys
 from pathlib import Path
+from typing import Literal
 
 import apprise
 import pydantic
@@ -13,6 +14,8 @@ logger = structlog.getLogger()
 
 
 class Config(pydantic.BaseSettings):
+    LOG_LEVEL: Literal["debug", "info", "warning", "error"] = "info"
+
     # Scaleway limitation: env variable can't start with "SCW" (reserved)
     # https://www.scaleway.com/en/docs/compute/containers/reference-content/containers-limitations/
     CLOUD_ACCESS_KEY: str = ""
