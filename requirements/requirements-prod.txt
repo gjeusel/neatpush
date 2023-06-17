@@ -13,11 +13,13 @@ apprise==1.4.0
 beautifulsoup4==4.12.2
     # via neatpush (pyproject.toml)
 boto3==1.26.37
-    # via neatpush (pyproject.toml)
+    # via bucketstore
 botocore==1.29.37
     # via
     #   boto3
     #   s3transfer
+bucketstore==0.2.2
+    # via neatpush (pyproject.toml)
 certifi==2022.12.7
     # via
     #   apprise

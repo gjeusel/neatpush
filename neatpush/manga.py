@@ -1,11 +1,8 @@
 import enum
-import tempfile
-from typing import Any
 
-import boto3
+import bucketstore
 import orjson
 import structlog
-from botocore.exceptions import ClientError as BotoClientError
 from pydantic import BaseModel, validator
 
 from neatpush.config import CFG
@@ -46,46 +43,23 @@ def scrap_manga(cache: Manga) -> list[MangaChapter]:
     return []
 
 
-DEFAULT_BUCKET_KEY = "neatpush.json"
-
-
-def _get_s3_client() -> Any:
-    session = boto3.Session(
-        aws_access_key_id=CFG.MY_SCW_ACCESS_KEY,
-        aws_secret_access_key=CFG.MY_SCW_SECRET_KEY.get_secret_value(),
-        region_name=CFG.MY_SCW_REGION_NAME,
+def _get_s3_bucket() -> bucketstore.S3Bucket:
+    bucketstore.login(
+        access_key_id=CFG.CLOUD_ACCESS_KEY,
+        secret_access_key=CFG.CLOUD_SECRET_KEY.get_secret_value(),
+        region=CFG.CLOUD_REGION_NAME,
+        endpoint_url=CFG.BUCKET_ENDPOINT_URL,
     )
-
-    return session.client(
-        "s3",
-        endpoint_url=CFG.MY_SCW_BUCKET_ENDPOINT_URL,
-    )
+    return bucketstore.get(CFG.BUCKET_NAME)
 
 
-def retrieve_cached_mangas(s3: Any, *, path: str = DEFAULT_BUCKET_KEY) -> list[Manga]:
-    tmp_filepath = tempfile.gettempdir() + "/tmp.json"
-
-    try:
-        s3.download_file(Bucket=CFG.MY_SCW_BUCKET, Key=path, Filename=tmp_filepath)
-    except BotoClientError as err:
-        if "Not Found" in str(err):
-            return []
-        else:
-            raise
-
-    with open(tmp_filepath) as f:
-        content = f.read()
-        raw = orjson.loads(content)
-
-    mangas = [Manga(**e) for e in raw]
-    return mangas
+def retrieve_cached_mangas(bucket: bucketstore.S3Bucket) -> list[Manga]:
+    raw = orjson.loads(bucket.get(CFG.BUCKET_KEY))
+    return [Manga(**e) for e in raw]
 
 
-def save_cached_mangas(
-    s3: Any, *, mangas: list[Manga], path: str = DEFAULT_BUCKET_KEY
-) -> None:
-    contents = orjson.dumps([m.dict() for m in mangas])
-    s3.put_object(Bucket=CFG.MY_SCW_BUCKET, Key=path, Body=contents)
+def save_cached_mangas(bucket: bucketstore.S3Bucket, *, mangas: list[Manga]) -> None:
+    bucket[CFG.BUCKET_KEY] = orjson.dumps([m.dict() for m in mangas])
 
 
 def get_new_chapters(
@@ -105,8 +79,8 @@ def get_new_chapters(
         MangaSource.toonily: scraping.scrap_toonily,
     }
 
-    s3 = _get_s3_client()
-    mangas = retrieve_cached_mangas(s3)
+    bucket = _get_s3_bucket()
+    mangas = retrieve_cached_mangas(bucket)
     map_name_cache = {m.name: m for m in mangas}
 
     updated_mangas: list[Manga] = []
@@ -155,6 +129,6 @@ def get_new_chapters(
                 )
             )
 
-    save_cached_mangas(s3, mangas=updated_mangas)
+    save_cached_mangas(bucket, mangas=updated_mangas)
 
     return to_notify_map

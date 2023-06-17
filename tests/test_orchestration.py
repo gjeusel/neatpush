@@ -2,7 +2,7 @@ from neatpush.manga import MangaSource, get_new_chapters
 
 
 def test_get_new_chapters(mocker, vcr):
-    mocker.patch("neatpush.manga._get_s3_client")
+    mocker.patch("neatpush.manga._get_s3_bucket")
 
     mocker.patch("neatpush.manga.retrieve_cached_mangas", return_value=[])
     mocked_save_cached_mangas = mocker.patch("neatpush.manga.save_cached_mangas")

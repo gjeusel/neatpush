@@ -11,19 +11,15 @@ PKG_DIR = Path(__file__).parents[1]
 
 
 class Config(pydantic.BaseSettings):
-    # AWS:
-    AWS_ACCESS_KEY: str = ""
-    AWS_SECRET_KEY: SecretStr = SecretStr("")
-    AWS_REGION_NAME: str = "eu-west-3"
-    AWS_SNS_TOPIC: str = ""
-
     # Scaleway
     # limitation: can't start with "SCW" (https://www.scaleway.com/en/docs/compute/containers/reference-content/containers-limitations/)
-    MY_SCW_ACCESS_KEY: str = ""
-    MY_SCW_SECRET_KEY: SecretStr = SecretStr("")
-    MY_SCW_REGION_NAME: str = "fr-par"
-    MY_SCW_BUCKET_ENDPOINT_URL: str = ""
-    MY_SCW_BUCKET: str = "messy"
+    CLOUD_ACCESS_KEY: str = ""
+    CLOUD_SECRET_KEY: SecretStr = SecretStr("")
+
+    CLOUD_REGION_NAME: str = "fr-par"
+    BUCKET_ENDPOINT_URL: str = "https://s3.fr-par.scw.cloud"
+    BUCKET_NAME: str = "messy"
+    BUCKET_KEY: str = "neatpush.json"
 
     # SMS
     SEND_SMS: bool = False
@@ -45,23 +41,6 @@ class Config(pydantic.BaseSettings):
     def notif_manager(self) -> apprise.Apprise:
         if not hasattr(self, "_notif_manager"):
             manager = apprise.Apprise()
-
-            has_aws_creds = all(
-                [
-                    self.AWS_ACCESS_KEY,
-                    self.AWS_SECRET_KEY,
-                    self.AWS_REGION_NAME,
-                    self.AWS_SNS_TOPIC,
-                ]
-            )
-            if self.SEND_SMS and has_aws_creds:
-                sns = "sns://{access_key}/{secret_key}/{region}/{topic}".format(
-                    access_key=self.AWS_ACCESS_KEY,
-                    secret_key=self.AWS_SECRET_KEY.get_secret_value(),
-                    region=self.AWS_REGION_NAME,
-                    topic=self.AWS_SNS_TOPIC,
-                )
-                manager.add(sns, tag="sms")
 
             if secret := self.SIMPLE_PUSH_KEY.get_secret_value():
                 manager.add(f"spush://{secret}", tag="always")
