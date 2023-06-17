@@ -45,8 +45,6 @@ def check_new_chapters() -> dict[str, list[MangaChapter]]:
     map_new_chapters = manga.get_new_chapters()
 
     if map_new_chapters:
-        logger.info(f"Found new chapters for {', '.join(map_new_chapters.keys())}")
-
         title, body = _format_notif_infos(map_new_chapters)
 
         tag = "all" if (CFG.SEND_SMS and len(body) < CFG.SMS_MAX_LEN) else "always"

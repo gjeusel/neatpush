@@ -41,8 +41,8 @@ dependencies = [
 
   # scraping:
   "httpx",
-  "gazpacho",   # html parsing - easier than beautiful soup
-  "dateparser", # parse human readable dates
+  "beautifulsoup4", # html parsing
+  "dateparser",     # parse human readable dates
 ]
 
 [project.optional-dependencies]
@@ -51,6 +51,7 @@ dev = [
   # types
   "types-dateparser",
   "types-pytz",
+  "types-beautifulsoup4",
   #
   # testing libs:
   "coverage[toml] >= 6.5.0,<7.0",
@@ -136,6 +137,8 @@ filterwarnings = [
   #
   # distutils:
   "ignore:distutils Version classes are deprecated:DeprecationWarning",
+  # beautifulsoup4
+  "ignore:No parser was explicitly specified:bs4.GuessedAtParserWarning:neatpush.scraping",
 ]
 
 [tool.coverage]
@@ -154,6 +157,7 @@ report = { precision = 2, exclude_lines = [
 
 [tool.mypy]
 python_version = "3.10"
+plugins = ["pydantic.mypy"]
 
 # Rules can be found at:
 # https://mypy.readthedocs.io/en/stable/command_line.html
@@ -167,11 +171,6 @@ show_error_codes = true
 implicit_reexport = true # no need to specify __all__ in modules
 # follow_imports = "silent"  # does not work when using dmypy https://github.com/python/mypy/issues/9475
 ignore_missing_imports = true # ignore missing stubs
-
-[[tool.mypy.overrides]]
-module = "neatpush.clients" # weird typing from gazpacho
-ignore_errors = true
-# disable_error_code = ['union-attr']  # is not a per-module flag
 
 [[tool.mypy.overrides]]
 module = ["tests.*", "docs.*"]

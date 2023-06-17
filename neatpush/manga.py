@@ -27,13 +27,18 @@ class Manga(BaseModel):
     source: MangaSource
     chapters: list[MangaChapter]
 
+    @property
+    def n_chapters(self) -> int:
+        return len(self.chapters)
+
     @validator("chapters")
     def _sort_chapters(cls, values: list[MangaChapter]) -> list[MangaChapter]:
-        values.sort(key=lambda x: x.timestamp)
-        return values
+        return sorted(values, key=lambda x: x.num)
 
     def __repr__(self) -> str:
-        return f"<Manga {self.name} - {self.source}>"
+        return f"<Manga {self.name} - {self.source}> #{self.n_chapters} chapters"
+
+    __str__ = __repr__
 
 
 def scrap_manga(cache: Manga) -> list[MangaChapter]:
@@ -83,13 +88,16 @@ def save_cached_mangas(
     s3.put_object(Bucket=CFG.MY_SCW_BUCKET, Key=path, Body=contents)
 
 
-def get_new_chapters() -> dict[str, list[MangaChapter]]:
-    map_manga_source = {
+def get_new_chapters(
+    map_manga_source: dict[MangaSource, list[str]] | None = None
+) -> dict[str, list[MangaChapter]]:
+    map_manga_source = map_manga_source or {
         MangaSource.mangapill: CFG.MANGAPILL,
         MangaSource.neatmanga: CFG.NEATMANGA,
         MangaSource.toonily: CFG.TOONILY,
     }
-    logger.debug("Checking for new chapters", **map_manga_source)
+
+    logger.debug("checking-sources", **map_manga_source)
 
     map_source_fn = {
         MangaSource.neatmanga: scraping.scrap_neatmanga,
@@ -109,43 +117,42 @@ def get_new_chapters() -> dict[str, list[MangaChapter]]:
         if scrap_fn is None:
             continue
 
+        log = logger.bind(source=source.value)
+
         for name in names:
-            logger.debug(f"Checking new chapters for {name} in {source.value}...")
+            log = log.bind(name=name)
+
+            log.debug("checking-start")
             try:
                 chapters = scrap_fn(name)
             except Exception:
-                logger.exception(
-                    f"Failed to fetch new chapters for {name} in {source.value}."
-                )
+                log.exception("failed-scrap")
                 continue
 
             if name not in map_name_cache:
                 updated_mangas.append(
                     Manga(name=name, source=source, chapters=chapters)
                 )
-                logger.info(f"First time checking chapters for {name}. Just caching.")
+                log.info("first-time", nchapters=len(chapters))
                 continue
 
             manga = map_name_cache[name]
             new_chapters = sorted(
-                set(chapters) - set(manga.chapters), key=lambda x: x.timestamp
-            )
-            all_chapters = sorted(
-                set(manga.chapters) | set(chapters),
-                key=lambda x: x.timestamp,
+                set(chapters) - set(manga.chapters), key=lambda x: x.num
             )
 
             if not new_chapters:
-                logger.debug(f"Found nothing new chapter for {name}.")
+                log.debug("nothing-new")
             else:
-                logger.info(
-                    f"Found new chapters for {name}: "
-                    + ", ".join(chap.num for chap in new_chapters)
-                )
+                log.info("new-chapters", nums=[c.num for c in new_chapters])
                 to_notify_map[name] = new_chapters
 
             updated_mangas.append(
-                Manga(name=name, source=source, chapters=all_chapters)
+                Manga(
+                    name=name,
+                    source=source,
+                    chapters=list(set(manga.chapters) | set(chapters)),
+                )
             )
 
     save_cached_mangas(s3, mangas=updated_mangas)

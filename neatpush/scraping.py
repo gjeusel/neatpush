@@ -1,13 +1,21 @@
 import re
+import warnings
 from dataclasses import dataclass, field
 from datetime import datetime
 
+import bs4
 import dateparser
 import httpx
 import pytz
-from gazpacho import Soup
+import structlog
+
+Soup = bs4.BeautifulSoup
+
+warnings.filterwarnings(action="ignore", category=bs4.GuessedAtParserWarning)
 
 tz = pytz.timezone("Europe/Brussels")
+
+logger = structlog.getLogger(__name__)
 
 
 class ScrapingError(Exception):
@@ -25,16 +33,21 @@ class MangaNotFound(ScrapingError):
 
 @dataclass(repr=False, frozen=True)
 class MangaChapter:
-    url: str = field(compare=False)
-    num: str
-    timestamp: datetime = field(compare=False)  # __hash__ is based on __eq__
+    url: str
+    num: float = field(compare=False)
+    timestamp: datetime = field(compare=False)
 
     def __repr__(self) -> str:
         ts = self.timestamp.strftime("%Y-%m-%d")
         return f"<MangaChapter {self.num}> {ts}"
 
+    __str__ = __repr__
 
-def scrap_neatmanga(name: str) -> list[MangaChapter]:
+
+PATTERN_NUM = re.compile(r"\d+\.?\d*")
+
+
+def scrap_neatmanga(name: str) -> set[MangaChapter]:
     url = f"https://neatmanga.com/manga/{name}/ajax/chapters"
     resp = httpx.post(url, follow_redirects=True)
 
@@ -46,85 +59,99 @@ def scrap_neatmanga(name: str) -> list[MangaChapter]:
     resp.raise_for_status()
     soup = Soup(resp.text)
 
-    raw = soup.find("li", attrs={"class": "wp-manga-chapter"})
-    assert isinstance(raw, list), f"Failed to parse html for {name}."
+    raw = soup.find_all("li", attrs={"class": "wp-manga-chapter"})
 
     results: list[MangaChapter] = []
     for e in raw:
-        timestamp = dateparser.parse(e.find("i").text)  # type: ignore
+        timestamp = dateparser.parse(e.find("i").text)
         assert timestamp, f"Could not find timestamp for {name} on {e}"
-        num = re.sub(r"Chapter ", "", e.find("a").text)  # type: ignore
+
+        a = e.find("a")
+
+        match = PATTERN_NUM.search(a.text)
+        if match:
+            num = match[0]
+        else:
+            continue
+
         results.append(
             MangaChapter(
-                num=num,
+                num=float(num),
                 timestamp=timestamp.astimezone(tz),
-                url=e.find("a").attrs["href"],  # type: ignore
+                url=a.attrs["href"],
             )
         )
 
-    results = sorted(set(results), key=lambda x: x.timestamp)
-    return results
+    return set(results)
 
 
-def scrap_mangapill(name: str) -> list[MangaChapter]:
+def scrap_mangapill(name: str) -> set[MangaChapter]:
     base_url = "https://mangapill.com"
     search_url = f"{base_url}/quick-search"
     search_resp = httpx.get(search_url, params={"q": name})
 
     search_soup = Soup(search_resp.text)
-    soup_best_match = search_soup.find("a", attrs={"href": "/manga"}, mode="first")
-
-    assert isinstance(soup_best_match, Soup)
-    assert soup_best_match.attrs
-    endpoint = soup_best_match.attrs["href"]
+    endpoint = search_soup.find("a").attrs["href"]  # type: ignore
 
     url = f"{base_url}{endpoint}"
     resp = httpx.get(url)
 
     soup = Soup(resp.text)
-    raw = soup.find("a", attrs={"href": "/chapters"})
-    assert isinstance(raw, list)
+    pattern = re.compile("^/chapters")
+    raw = soup.find_all("a", attrs={"href": pattern})
 
     chapters: list[MangaChapter] = []
     for e in raw:
-        assert e.attrs
         endpoint = e.attrs["href"]
         url = f"{base_url}{endpoint}"
-        num = e.text.split("Chapter ")[-1].strip()
-        chapters.append(MangaChapter(url=url, num=num, timestamp=datetime.utcnow()))
 
-    return chapters
+        match = PATTERN_NUM.search(e.text)
+        if match:
+            num = match[0]
+        else:
+            continue
+
+        chapters.append(
+            MangaChapter(
+                url=url,
+                num=float(num),
+                timestamp=datetime.utcnow(),
+            )
+        )
+
+    return set(chapters)
 
 
-def scrap_toonily(name: str) -> list[MangaChapter]:
+def scrap_toonily(name: str) -> set[MangaChapter]:
     url = f"https://toonily.net/manga/{name}/"
     resp = httpx.get(url)
 
     soup = Soup(resp.text)
-    raw = soup.find("li", attrs={"class": "wp-manga-chapter"})
-    assert isinstance(raw, list)
+    raw = soup.find_all("li", attrs={"class": "wp-manga-chapter"})
 
+    pattern = re.compile(f"^{url}")
     results: list[MangaChapter] = []
     for e in raw:
-        a = e.find("a", attrs={"href": url}, mode="first")
-        if not isinstance(a, Soup):
+        a = e.find("a", attrs={"href": pattern})
+        href = a.attrs["href"]
+
+        match = PATTERN_NUM.search(a.text)
+        if match:
+            num = match[0]
+        else:
             continue
 
-        assert a.attrs
-        href = a.attrs["href"]
-        num = a.text.split("chapter-")[-1].strip()
-
         if e.find("i"):
-            soup_timestamp = e.find("i", mode="first").text  # type: ignore
+            soup_timestamp = e.find("i").text
         else:
-            soup_timestamp = e.find("a", attrs={"title": ""}, mode="first").attrs["title"]  # type: ignore
+            soup_timestamp = e.find_all("a")[-1].attrs["title"]
 
         timestamp = dateparser.parse(soup_timestamp)
         assert timestamp, f"Failed to find timestamp for {name} on toonily"
 
         results.append(
             MangaChapter(
-                num=num,
+                num=float(num),
                 timestamp=timestamp.astimezone(tz),
                 url=href,
             )
@@ -132,4 +159,4 @@ def scrap_toonily(name: str) -> list[MangaChapter]:
 
     assert results, f"Found no chapters for {name}"
 
-    return results
+    return set(results)
