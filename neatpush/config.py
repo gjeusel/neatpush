@@ -32,6 +32,9 @@ class Config(pydantic.BaseSettings):
     # Simple Push
     SIMPLE_PUSH_KEY: SecretStr = SecretStr("")
 
+    # Push Technulus
+    TECHULUS_PUSH_KEY: SecretStr = SecretStr("")
+
     NEATMANGA: list[str] = pydantic.Field(default_factory=list)
     MANGAPILL: list[str] = pydantic.Field(default_factory=list)
     TOONILY: list[str] = pydantic.Field(default_factory=list)
@@ -60,11 +63,11 @@ class Config(pydantic.BaseSettings):
                 )
                 manager.add(sns, tag="sms")
 
-            if self.SIMPLE_PUSH_KEY:
-                manager.add(
-                    f"spush://{self.SIMPLE_PUSH_KEY.get_secret_value()}",
-                    tag="always",
-                )
+            if secret := self.SIMPLE_PUSH_KEY.get_secret_value():
+                manager.add(f"spush://{secret}", tag="always")
+
+            if secret := self.TECHULUS_PUSH_KEY.get_secret_value():
+                manager.add(f"push://{secret}/", tag="always")
 
             self._notif_manager = manager
 
