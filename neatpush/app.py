@@ -7,7 +7,7 @@ import structlog
 from apprise import NotifyFormat
 from starlette.applications import Starlette
 from starlette.requests import Request
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
 
 from . import manga
@@ -66,7 +66,14 @@ async def homepage(request: Request) -> ORJSONReponse:
     return ORJSONReponse(map_new_chapters)
 
 
-routes = [Route("/", endpoint=homepage, methods=["POST", "GET"])]
+async def ping(request: Request) -> Response:
+    return Response(content="pong")
+
+
+routes = [
+    Route("/", endpoint=homepage, methods=["POST", "GET"]),
+    Route("/ping", endpoint=ping, methods=["GET"]),
+]
 
 app = Starlette(debug=True, routes=routes)
 
