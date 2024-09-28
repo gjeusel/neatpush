@@ -23,21 +23,5 @@
   "notebook.codeActionsOnSave": {
     "source.fixAll.ruff": true,
     "source.organizeImports.ruff": true
-  },
-  // ________ misc ________
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "" // should be djhtml
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }
