@@ -2,14 +2,14 @@
 
 <p align="center">
   <a href="https://github.com/gjeusel/neatpush/actions?query=workflow%3ACI+branch%3Amain">
-      <img src="https://github.com/gjeusel/neatpush/workflows/ci.yml/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
+      <img src="https://github.com/gjeusel/neatpush/workflows//CI/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
   </a>
   <a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/gjeusel/neatpush" alt="Test Coverage" onerror="this.style.display='none'">
       <img src="https://coverage-badge.samuelcolvin.workers.dev/gjeusel/neatpush.svg" alt="Coverage">
   </a>
-  <a href="https://pypi.org/project/neatpush/">
-      <img src="https://img.shields.io/pypi/v/neatpush" alt="Package version" onerror="this.style.display='none'">
-  </a>
+  <!-- <a href="https://pypi.org/project/neatpush/"> -->
+  <!--     <img src="https://img.shields.io/pypi/v/neatpush" alt="Package version" onerror="this.style.display='none'"> -->
+  <!-- </a> -->
   <a href="https://gjeusel.github.io/neatpush/">
     <img src="https://img.shields.io/badge/mkdocs-pages-brightgreen" alt="MKDocs github page">
   </a>
