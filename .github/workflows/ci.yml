@@ -111,7 +111,7 @@ jobs:
           pattern: coverage-*
           path: coverage
 
-      - run: uv pip install 'coverage[toml]'
+      - run: uv venv && uv pip install 'coverage[toml]'
 
       - run: ls -la coverage
 
