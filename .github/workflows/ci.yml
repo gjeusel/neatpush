@@ -105,9 +105,9 @@ jobs:
           path: coverage
 
       - run: ls -la coverage
-      - run: uvc coverage combine coverage
-      - run: uvc coverage report
-      - run: uvc coverage html --show-contexts --title "pydantic coverage for ${{ github.sha }}"
+      - run: uvx coverage combine coverage
+      - run: uvx coverage report
+      - run: uvx coverage html --show-contexts --title "pydantic coverage for ${{ github.sha }}"
 
       - name: Store coverage html
         uses: actions/upload-artifact@v3
