@@ -110,8 +110,8 @@ jobs:
       - run: ls -la coverage
 
       - run: uvx --from 'coverage[toml]' coverage combine coverage
-      - run: uvx coverage report
-      - run: run coverage html --show-contexts --title "neatpush coverage for ${{ github.sha }}"
+      - run: uvx --from 'coverage[toml]' coverage report
+      - run: uvx --from 'coverage[toml]' coverage html --show-contexts --title "neatpush coverage for ${{ github.sha }}"
 
       - name: Store coverage html
         uses: actions/upload-artifact@v4
@@ -168,7 +168,7 @@ jobs:
 
   deploy:
     name: Deploy Scaleway
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     needs: [docker]
     runs-on: ubuntu-latest
     container:
