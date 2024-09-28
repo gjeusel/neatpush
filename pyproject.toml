@@ -34,7 +34,9 @@ dependencies = [
   "pydantic<3.0.0",
   "pydantic-settings<3.0.0",
 
-  "bucketstore==0.2.2", # use boto3 for s3 under the hood
+  "httpx",
+  "tenacity",
+
   "orjson",
   "apprise",
 

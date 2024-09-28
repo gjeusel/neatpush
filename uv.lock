@@ -111,46 +111,6 @@ wheels = [
 ]
 
 [[package]]
-name = "boto3"
-version = "1.35.29"
-source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
-dependencies = [
-    { name = "botocore" },
-    { name = "jmespath" },
-    { name = "s3transfer" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/25/d8/f7bc41e01e83eaad1ec297cfb675c1f98cc59450b1f4a76b93a1e31a2b09/boto3-1.35.29.tar.gz", hash = "sha256:7bbb1ee649e09e956952285782cfdebd7e81fc78384f48dfab3d66c6eaf3f63f", size = 111002 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/47/0c/5646287d1f4aeab4e0b55e517935d2debba6bce47cc0542ab618868b18d3/boto3-1.35.29-py3-none-any.whl", hash = "sha256:2244044cdfa8ac345d7400536dc15a4824835e7ec5c55bc267e118af66bb27db", size = 139138 },
-]
-
-[[package]]
-name = "botocore"
-version = "1.35.29"
-source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
-dependencies = [
-    { name = "jmespath" },
-    { name = "python-dateutil" },
-    { name = "urllib3" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/41/23/482871ed269fa0c832f98c840686b4ef18662b3fb800eab48a48817d286c/botocore-1.35.29.tar.gz", hash = "sha256:4ed28ab03675bb008a290c452c5ddd7aaa5d4e3fa1912aadbdf93057ee84362b", size = 12772652 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/8a/eb/30c1bf5dc2ec8829baee4d8423da5b63ae2c9f7678d809ef2e375fd67212/botocore-1.35.29-py3-none-any.whl", hash = "sha256:f8e3ae0d84214eff3fb69cb4dc51cea6c43d3bde82027a94d00c52b941d6c3d5", size = 12560375 },
-]
-
-[[package]]
-name = "bucketstore"
-version = "0.2.2"
-source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
-dependencies = [
-    { name = "boto3" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ef/ae/9e4c0159d77512ed35957db0c6d290c3aa59671c2c358b181d1191c788a2/bucketstore-0.2.2.tar.gz", hash = "sha256:4d87cbe33edb0de5a5c0f79d6ed2c6537539571482d6aeed3d819c7d250fb403", size = 6330 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d4/2c/3dc9e48d9c0dfeed1c5557abdd0cc68b888a6df007cccba879f048b5214f/bucketstore-0.2.2-py3-none-any.whl", hash = "sha256:29ecd4ab369acecd0fe53934e11396ff58e30c42962318a15976f0242ff34f87", size = 6411 },
-]
-
-[[package]]
 name = "certifi"
 version = "2024.8.30"
 source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
@@ -547,15 +507,6 @@ wheels = [
 ]
 
 [[package]]
-name = "jmespath"
-version = "1.0.1"
-source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe", size = 25843 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980", size = 20256 },
-]
-
-[[package]]
 name = "markdown"
 version = "3.7"
 source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
@@ -898,12 +849,11 @@ wheels = [
 
 [[package]]
 name = "neatpush"
-version = "0.4.3.dev7+g128be78.d20240928"
+version = "0.4.3.dev12+g1baf93f.d20240928"
 source = { editable = "." }
 dependencies = [
     { name = "apprise" },
     { name = "beautifulsoup4" },
-    { name = "bucketstore" },
     { name = "dateparser" },
     { name = "httpx" },
     { name = "orjson" },
@@ -911,6 +861,7 @@ dependencies = [
     { name = "pydantic-settings" },
     { name = "starlette" },
     { name = "structlog" },
+    { name = "tenacity" },
     { name = "typer" },
     { name = "uvicorn" },
 ]
@@ -976,7 +927,6 @@ nvim-lsp = [
 requires-dist = [
     { name = "apprise" },
     { name = "beautifulsoup4" },
-    { name = "bucketstore", specifier = "==0.2.2" },
     { name = "cookiecutter", marker = "extra == 'all'" },
     { name = "cookiecutter", marker = "extra == 'dev'" },
     { name = "coverage", marker = "extra == 'all'" },
@@ -1023,6 +973,7 @@ requires-dist = [
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6,<1.0" },
     { name = "starlette" },
     { name = "structlog" },
+    { name = "tenacity" },
     { name = "typer" },
     { name = "types-beautifulsoup4", marker = "extra == 'all'" },
     { name = "types-beautifulsoup4", marker = "extra == 'dev'" },
@@ -1690,18 +1641,6 @@ wheels = [
 ]
 
 [[package]]
-name = "s3transfer"
-version = "0.10.2"
-source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
-dependencies = [
-    { name = "botocore" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/cb/67/94c6730ee4c34505b14d94040e2f31edf144c230b6b49e971b4f25ff8fab/s3transfer-0.10.2.tar.gz", hash = "sha256:0711534e9356d3cc692fdde846b4a1e4b0cb6519971860796e6bc4c7aea00ef6", size = 144095 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3c/4a/b221409913760d26cf4498b7b1741d510c82d3ad38381984a3ddc135ec66/s3transfer-0.10.2-py3-none-any.whl", hash = "sha256:eca1c20de70a39daee580aef4986996620f365c4e0fda6a86100231d62f1bf69", size = 82716 },
-]
-
-[[package]]
 name = "shellingham"
 version = "1.5.4"
 source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
@@ -1765,6 +1704,15 @@ source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi
 sdist = { url = "https://files.pythonhosted.org/packages/78/a3/e811a94ac3853826805253c906faa99219b79951c7d58605e89c79e65768/structlog-24.4.0.tar.gz", hash = "sha256:b27bfecede327a6d2da5fbc96bd859f114ecc398a6389d664f62085ee7ae6fc4", size = 1348634 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/bf/65/813fc133609ebcb1299be6a42e5aea99d6344afb35ccb43f67e7daaa3b92/structlog-24.4.0-py3-none-any.whl", hash = "sha256:597f61e80a91cc0749a9fd2a098ed76715a1c8a01f73e336b746504d1aad7610", size = 67180 },
+]
+
+[[package]]
+name = "tenacity"
+version = "9.0.0"
+source = { registry = "https://gitlab.com/api/v4/projects/21733396/packages/pypi/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cd/94/91fccdb4b8110642462e653d5dcb27e7b674742ad68efd146367da7bdb10/tenacity-9.0.0.tar.gz", hash = "sha256:807f37ca97d62aa361264d497b0e31e92b8027044942bfa756160d908320d73b", size = 47421 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b6/cb/b86984bed139586d01532a587464b5805f12e397594f19f931c4c2fbfa61/tenacity-9.0.0-py3-none-any.whl", hash = "sha256:93de0c98785b27fcf659856aa9f54bfbd399e29969b0621bc7f762bd441b4539", size = 28169 },
 ]
 
 [[package]]

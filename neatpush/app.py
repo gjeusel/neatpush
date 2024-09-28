@@ -58,7 +58,7 @@ def check_new_chapters() -> dict[str, list[MangaChapter]]:
     return map_new_chapters
 
 
-async def homepage(request: Request) -> ORJSONReponse:
+async def trigger_chapters_check(request: Request) -> ORJSONReponse:
     map_new_chapters = check_new_chapters()
     return ORJSONReponse(map_new_chapters)
 
@@ -68,7 +68,7 @@ async def ping(request: Request) -> Response:
 
 
 routes = [
-    Route("/", endpoint=homepage, methods=["POST", "GET"]),
+    Route("/", endpoint=trigger_chapters_check, methods=["POST", "GET"]),
     Route("/ping", endpoint=ping, methods=["GET"]),
 ]
 
