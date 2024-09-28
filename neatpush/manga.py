@@ -3,7 +3,7 @@ import enum
 import bucketstore
 import orjson
 import structlog
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 
 from neatpush import scraping
 from neatpush.config import CFG
@@ -27,7 +27,8 @@ class Manga(BaseModel):
     def n_chapters(self) -> int:
         return len(self.chapters)
 
-    @validator("chapters")
+    @field_validator("chapters")
+    @classmethod
     def _sort_chapters(cls, values: list[MangaChapter]) -> list[MangaChapter]:
         return sorted(values, key=lambda x: x.num)
 
