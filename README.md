@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/gjeusel/neatpush/actions?query=workflow%3ACI+branch%3Amain">
-      <img src="https://github.com/gjeusel/neatpush/workflows//CI/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
+      <img src="https://github.com/gjeusel/neatpush/workflows/ci.yml/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
   </a>
   <a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/gjeusel/neatpush" alt="Test Coverage" onerror="this.style.display='none'">
       <img src="https://coverage-badge.samuelcolvin.workers.dev/gjeusel/neatpush.svg" alt="Coverage">
@@ -21,38 +21,3 @@
 <p align="center">
   <em>Notify me of new manga chapters.</em>
 </p>
-
----
-
-## Installation
-
-```bash
-pip install neatpush
-```
-
-### Developper
-
-##### Install
-
-```bash
-make install
-```
-
-##### Launch tests:
-
-```bash
-pytest
-```
-
-##### Write docs:
-
-```bash
-mkdocs serve --watch .
-```
-
-### Update Cookiecutter Template
-
-```bash
-cruft update --skip-apply-ask --allow-untracked-files --project-dir .
-```
-

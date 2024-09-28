@@ -2,7 +2,7 @@ import pytest
 from vcr import VCR
 from vcr.persisters.filesystem import FilesystemPersister as VCRFilesystemPersister
 
-from . import VCR_DIR
+from tests import VCR_DIR
 
 
 @pytest.fixture(scope="session")

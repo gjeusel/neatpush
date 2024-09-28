@@ -4,7 +4,7 @@
 install:
 	@which uv > /dev/null 2>&1 || (echo "Installing uv..." && curl -LsSf https://astral.sh/uv/install.sh | sh)
 	uv sync --all-extras --python 3.12
-	pre-commit install -t pre-push
+	uv run pre-commit install -t pre-push
 
 .PHONY: format
 format:
@@ -37,6 +37,7 @@ clean:
 	rm -f `find . -type f -name '.*DS_Store'`
 	rm -rf .cache
 	rm -rf .*_cache
+	rm -rf .ropeproject
 	rm -rf htmlcov
 	rm -rf *.egg-info
 	rm -rf .eggs

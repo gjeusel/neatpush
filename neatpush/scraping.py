@@ -1,7 +1,7 @@
 import re
 import warnings
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 
 import bs4
 import dateparser
@@ -115,7 +115,7 @@ def scrap_mangapill(name: str) -> set[MangaChapter]:
             MangaChapter(
                 url=url,
                 num=float(num),
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(tz=UTC),
             )
         )
 

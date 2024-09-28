@@ -17,19 +17,8 @@ repos:
         language: system
         pass_filenames: false
 
-
-  - repo: https://github.com/jazzband/pip-tools
-    rev: 6.13.0
-    hooks:
-      - id: pip-compile
-        name: pip-compile pyproject.toml
+      - id: uv lock file
+        name: uv lock file
+        language: system
+        entry: uv lock --locked
         files: ^pyproject.toml$
-        args:
-          [
-            --no-emit-index-url,
-            --extra,
-            prod,
-            --output-file,
-            requirements/requirements-prod.txt,
-            pyproject.toml,
-          ]

@@ -41,7 +41,7 @@ jobs:
       - name: List deps
         run: pip freeze
 
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
         with:
           extra_args: --all-files --verbose
 
@@ -51,7 +51,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu] # [ubuntu, macos, windows]
-        python-version: ["3.10"] # ["3.9", "3.10", "3.11"]
+        python-version: ["3.11"] # ["3.9", "3.10", "3.11"]
 
     env:
       PYTHON: ${{ matrix.python-version }}
@@ -61,16 +61,16 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
           cache-dependency-path: pyproject.toml
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: cache
         with:
           path: |
@@ -96,26 +96,27 @@ jobs:
           CONTEXT: ${{ runner.os }}-py${{ matrix.python-version }}
 
       - name: Store coverage files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
           path: coverage
 
   coverage-combine:
-    name: Coverage
+    name: coverage
     needs: [test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Get coverage files
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: coverage
+          merge-multiple: true
+          pattern: coverage-*
           path: coverage
 
       - run: pip install coverage[toml]

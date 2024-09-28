@@ -5,10 +5,9 @@ import orjson
 import structlog
 from pydantic import BaseModel, validator
 
+from neatpush import scraping
 from neatpush.config import CFG
-
-from . import scraping
-from .scraping import MangaChapter
+from neatpush.scraping import MangaChapter
 
 logger = structlog.getLogger(__name__)
 
@@ -63,7 +62,7 @@ def save_cached_mangas(bucket: bucketstore.S3Bucket, *, mangas: list[Manga]) -> 
 
 
 def get_new_chapters(
-    map_manga_source: dict[MangaSource, list[str]] | None = None
+    map_manga_source: dict[MangaSource, list[str]] | None = None,
 ) -> dict[str, list[MangaChapter]]:
     map_manga_source = map_manga_source or {
         MangaSource.mangapill: CFG.MANGAPILL,

@@ -62,8 +62,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# mkdocs doc
+# mkdocs documentation
 site/
+docs-build/
 
 # PyBuilder
 target/
@@ -102,3 +103,6 @@ ENV/
 
 # Macos
 *.DS_Store
+#
+# jupyterlab
+*.virtual_documents

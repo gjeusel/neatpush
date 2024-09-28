@@ -6,10 +6,8 @@
 {
   "recommendations": [
     "ms-python.python",
-    "ms-python.black-formatter",
-    "ms-python.isort",
+    "ms-python.mypy-type-checker",
     "charliermarsh.ruff",
-    "matangover.mypy",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode"
   ]

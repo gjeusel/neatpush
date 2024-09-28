@@ -3,8 +3,8 @@ import typer
 import uvicorn
 from uvicorn.config import LOGGING_CONFIG
 
-from .app import check_new_chapters
-from .manga import _get_s3_bucket, retrieve_cached_mangas, save_cached_mangas
+from neatpush.app import check_new_chapters
+from neatpush.manga import _get_s3_bucket, retrieve_cached_mangas, save_cached_mangas
 
 logger = structlog.getLogger("neatpush")
 
@@ -17,7 +17,6 @@ def run_server(
     host: str = typer.Option("127.0.0.1", help="host to use"),
     watch: bool = typer.Option(False, "--watch/--no-watch"),
 ) -> None:
-
     log_config = LOGGING_CONFIG | {
         "loggers": {
             "uvicorn": {"handlers": ["default"], "level": "INFO", "propagate": False},

@@ -10,9 +10,9 @@ from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
 
-from . import manga
-from .config import CFG, setup_logging
-from .scraping import MangaChapter
+from neatpush import manga
+from neatpush.config import CFG, setup_logging
+from neatpush.scraping import MangaChapter
 
 logger = structlog.getLogger("neatpush")
 
@@ -23,7 +23,7 @@ class ORJSONReponse(JSONResponse):
 
 
 def _format_notif_infos(
-    map_new_chapters: dict[str, list[MangaChapter]]
+    map_new_chapters: dict[str, list[MangaChapter]],
 ) -> tuple[str, str]:
     total_chapters = 0
     names: list[str] = []
@@ -33,8 +33,9 @@ def _format_notif_infos(
             total_chapters += len(chapters)
             names.append(name)
 
-        for chapter in chapters:
-            pieces.append(f"- [{name} #{chapter.num}]({chapter.url})")
+        pieces.extend(
+            f"- [{name} #{chapter.num}]({chapter.url})" for chapter in chapters
+        )
 
     title = f"Neatpush ({', '.join(names)})"
     body = "\n".join(pieces)
