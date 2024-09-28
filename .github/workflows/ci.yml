@@ -105,12 +105,12 @@ jobs:
           pattern: coverage-*
           path: coverage
 
-      - run: uv pip install coverage[toml]
+      - run: uv pip install --system coverage[toml]
 
       - run: ls -la coverage
-      - run: uv run coverage combine coverage
-      - run: uv run coverage report
-      - run: uv run coverage html --show-contexts --title "neatpush coverage for ${{ github.sha }}"
+      - run: coverage combine coverage
+      - run: run coverage report
+      - run: run coverage html --show-contexts --title "neatpush coverage for ${{ github.sha }}"
 
       - name: Store coverage html
         uses: actions/upload-artifact@v4
