@@ -106,9 +106,10 @@ jobs:
           pattern: coverage-*
           path: coverage
 
-      - run: uv pip install --system coverage[toml]
 
       - run: ls -la coverage
+
+      - run: alias coverage='uvx --from coverage[toml] coverage'
       - run: coverage combine coverage
       - run: run coverage report
       - run: run coverage html --show-contexts --title "neatpush coverage for ${{ github.sha }}"
