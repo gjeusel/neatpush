@@ -1,6 +1,6 @@
 {
-  "template": "/Users/gjeusel/src/soft-cookiecutter",
-  "commit": "767a6ebfe5595f20a0f705ddfb70a4a6488dd30a",
+  "template": "~/src/soft-cookiecutter",
+  "commit": "3ed29e85d13258145d19ee765ee74a361ffaa8d2",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -13,7 +13,7 @@
       "_copy_without_render": [
         "{{cookiecutter.project_name}}/.github/workflows/ci.yml"
       ],
-      "_template": "/Users/gjeusel/src/soft-cookiecutter"
+      "_template": "~/src/soft-cookiecutter"
     }
   },
   "directory": null

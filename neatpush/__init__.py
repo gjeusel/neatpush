@@ -11,5 +11,5 @@ import warnings
 # Ignore dateparser warnings regarding pytz
 warnings.filterwarnings(
     "ignore",
-    message="The localize method is no longer necessary, as this time zone supports the fold attribute",  # noqa
+    message="The localize method is no longer necessary, as this time zone supports the fold attribute",
 )

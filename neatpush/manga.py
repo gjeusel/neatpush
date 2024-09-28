@@ -1,14 +1,13 @@
 import enum
 
-import bucketstore
 import orjson
 import structlog
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 
+from neatpush import scraping
 from neatpush.config import CFG
-
-from . import scraping
-from .scraping import MangaChapter
+from neatpush.s3 import S3Client
+from neatpush.scraping import MangaChapter
 
 logger = structlog.getLogger(__name__)
 
@@ -28,7 +27,8 @@ class Manga(BaseModel):
     def n_chapters(self) -> int:
         return len(self.chapters)
 
-    @validator("chapters")
+    @field_validator("chapters")
+    @classmethod
     def _sort_chapters(cls, values: list[MangaChapter]) -> list[MangaChapter]:
         return sorted(values, key=lambda x: x.num)
 
@@ -38,32 +38,29 @@ class Manga(BaseModel):
     __str__ = __repr__
 
 
-def scrap_manga(cache: Manga) -> list[MangaChapter]:
-    """Scrap chapters for a given manga, and return uncommunicated chapters."""
-    return []
-
-
-def _get_s3_bucket() -> bucketstore.S3Bucket:
-    bucketstore.login(
-        access_key_id=CFG.CLOUD_ACCESS_KEY,
-        secret_access_key=CFG.CLOUD_SECRET_KEY.get_secret_value(),
+def _get_s3_client() -> S3Client:
+    return S3Client(
+        access_key=CFG.CLOUD_ACCESS_KEY,
+        secret_key=CFG.CLOUD_SECRET_KEY,
+        bucket=CFG.BUCKET_NAME,
+        base_url=CFG.BUCKET_ENDPOINT_URL,
         region=CFG.CLOUD_REGION_NAME,
-        endpoint_url=CFG.BUCKET_ENDPOINT_URL,
     )
-    return bucketstore.get(CFG.BUCKET_NAME)
 
 
-def retrieve_cached_mangas(bucket: bucketstore.S3Bucket) -> list[Manga]:
-    raw = orjson.loads(bucket.get(CFG.BUCKET_KEY))
+def retrieve_cached_mangas(s3client: S3Client) -> list[Manga]:
+    content = s3client.download(CFG.BUCKET_KEY)
+    raw = orjson.loads(content)
     return [Manga(**e) for e in raw]
 
 
-def save_cached_mangas(bucket: bucketstore.S3Bucket, *, mangas: list[Manga]) -> None:
-    bucket[CFG.BUCKET_KEY] = orjson.dumps([m.dict() for m in mangas])
+def save_cached_mangas(s3client: S3Client, *, mangas: list[Manga]) -> None:
+    content = orjson.dumps([m.dict() for m in mangas])
+    s3client.upload(CFG.BUCKET_KEY, content)
 
 
 def get_new_chapters(
-    map_manga_source: dict[MangaSource, list[str]] | None = None
+    map_manga_source: dict[MangaSource, list[str]] | None = None,
 ) -> dict[str, list[MangaChapter]]:
     map_manga_source = map_manga_source or {
         MangaSource.mangapill: CFG.MANGAPILL,
@@ -79,8 +76,8 @@ def get_new_chapters(
         MangaSource.toonily: scraping.scrap_toonily,
     }
 
-    bucket = _get_s3_bucket()
-    mangas = retrieve_cached_mangas(bucket)
+    s3client = _get_s3_client()
+    mangas = retrieve_cached_mangas(s3client)
     map_name_cache = {m.name: m for m in mangas}
 
     updated_mangas: list[Manga] = []
@@ -129,6 +126,6 @@ def get_new_chapters(
                 )
             )
 
-    save_cached_mangas(bucket, mangas=updated_mangas)
+    save_cached_mangas(s3client, mangas=updated_mangas)
 
     return to_notify_map

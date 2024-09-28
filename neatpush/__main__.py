@@ -3,8 +3,8 @@ import typer
 import uvicorn
 from uvicorn.config import LOGGING_CONFIG
 
-from .app import check_new_chapters
-from .manga import _get_s3_bucket, retrieve_cached_mangas, save_cached_mangas
+from neatpush.app import check_new_chapters
+from neatpush.manga import _get_s3_client, retrieve_cached_mangas, save_cached_mangas
 
 logger = structlog.getLogger("neatpush")
 
@@ -17,7 +17,6 @@ def run_server(
     host: str = typer.Option("127.0.0.1", help="host to use"),
     watch: bool = typer.Option(False, "--watch/--no-watch"),
 ) -> None:
-
     log_config = LOGGING_CONFIG | {
         "loggers": {
             "uvicorn": {"handlers": ["default"], "level": "INFO", "propagate": False},
@@ -44,17 +43,17 @@ def run() -> None:
     check_new_chapters()
 
 
-@cli.command("rmcache")
-def rmcache() -> None:
-    bucket = _get_s3_bucket()
-    save_cached_mangas(bucket, mangas=[])
-    logger.info("Removed cached manga")
+# @cli.command("rmcache")
+# def rmcache() -> None:
+#     bucket = _get_s3_client()
+#     save_cached_mangas(bucket, mangas=[])
+#     logger.info("Removed cached manga")
 
 
 @cli.command("poplast")
 def poplast(name: str = typer.Option(default="omniscient-reader")) -> None:
-    bucket = _get_s3_bucket()
-    mangas = retrieve_cached_mangas(bucket)
+    s3client = _get_s3_client()
+    mangas = retrieve_cached_mangas(s3client)
 
     chapter = None
     for manga in mangas:
@@ -63,7 +62,7 @@ def poplast(name: str = typer.Option(default="omniscient-reader")) -> None:
             break
 
     if chapter:
-        save_cached_mangas(bucket, mangas=mangas)
+        save_cached_mangas(s3client, mangas=mangas)
         logger.info(f"Pop last '{name}' chapter ({chapter})")
 
 

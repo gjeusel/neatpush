@@ -7,13 +7,19 @@ import apprise
 import pydantic
 import structlog
 from pydantic.types import SecretStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 PKG_DIR = Path(__file__).parents[1]
 
 logger = structlog.getLogger()
 
 
-class Config(pydantic.BaseSettings):
+class Config(BaseSettings):
+    model_config = SettingsConfigDict(
+        extra="ignore",
+        env_file=(PKG_DIR / ".env").as_posix(),
+    )
+
     LOG_LEVEL: Literal["debug", "info", "warning", "error"] = "info"
 
     # Scaleway limitation: env variable can't start with "SCW" (reserved)
@@ -54,9 +60,6 @@ class Config(pydantic.BaseSettings):
             self._notif_manager = manager
 
         return self._notif_manager
-
-    class Config:
-        env_file = (PKG_DIR / ".env").as_posix()
 
 
 CFG = Config()

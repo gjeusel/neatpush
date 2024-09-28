@@ -1,30 +1,28 @@
 .DEFAULT_GOAL := all
-black = black neatpush tests
-ruff = ruff neatpush tests
 
 .PHONY: install
 install:
-	pip install -U pip
-	pip install -e .[all]
-	pre-commit install -t pre-push
+	@which uv > /dev/null 2>&1 || (echo "Installing uv..." && curl -LsSf https://astral.sh/uv/install.sh | sh)
+	uv sync --all-extras --python 3.12
+	uv run pre-commit install -t pre-push
 
 .PHONY: format
 format:
-	$(ruff) --fix
-	$(black)
+	uv run ruff check --fix neatpush/ tests/
+	uv run ruff format neatpush/ tests/
 
 .PHONY: lint
 lint:
-	ruff neatpush/ tests/
-	$(black) --check
+	uv run ruff check neatpush/ tests/
+	uv run ruff format --check neatpush/ tests/
 
 .PHONY: mypy
 mypy:
-	mypy --cache-fine-grained neatpush
+	uv run mypy neatpush --enable-incomplete-feature=NewGenericSyntax
 
 .PHONY: test
 test:
-	pytest
+	uv pytest
 
 .PHONY: all
 all: lint mypy test
@@ -39,6 +37,7 @@ clean:
 	rm -f `find . -type f -name '.*DS_Store'`
 	rm -rf .cache
 	rm -rf .*_cache
+	rm -rf .ropeproject
 	rm -rf htmlcov
 	rm -rf *.egg-info
 	rm -rf .eggs
