@@ -207,7 +207,7 @@ report = { precision = 2, exclude_lines = [
 ], sort = "Miss" }
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.12"
 plugins = ["pydantic.mypy"]
 
 # Rules can be found at:
