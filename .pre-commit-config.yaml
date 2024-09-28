@@ -17,8 +17,8 @@ repos:
         language: system
         pass_filenames: false
 
-      - id: uv lock file
-        name: uv lock file
-        language: system
-        entry: uv lock --locked
-        files: ^pyproject.toml$
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.4.17
+    hooks:
+      - id: uv-lock
+        name: Lockfile
