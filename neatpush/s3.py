@@ -9,7 +9,7 @@ from collections.abc import Generator
 from datetime import UTC, datetime
 from functools import reduce
 from pathlib import Path
-from typing import Annotated, Any, ClassVar, Literal, TypeAlias, overload
+from typing import Annotated, Any, ClassVar, Literal, overload
 from urllib.parse import quote as url_quote
 
 import httpx
@@ -24,7 +24,7 @@ from pydantic import (
 )
 from pydantic.alias_generators import to_pascal
 
-HttpMethodT: TypeAlias = Literal["GET", "POST", "PUT", "DELETE"] | str
+type HttpMethodT = Literal["GET", "POST", "PUT", "DELETE"] | str
 
 xmlns = "http://s3.amazonaws.com/doc/2006-03-01/"
 xmlns_pattern = re.compile(f' xmlns="{re.escape(xmlns)}"'.encode())

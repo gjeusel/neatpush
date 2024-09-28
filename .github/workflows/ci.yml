@@ -21,6 +21,11 @@ jobs:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
       - uses: actions/cache@v3
         id: cache
         with:
@@ -61,6 +66,11 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install the project
         run: uv sync --all-extras --dev

@@ -18,7 +18,7 @@ lint:
 
 .PHONY: mypy
 mypy:
-	uv run mypy neatpush
+	uv run mypy neatpush --enable-incomplete-feature=NewGenericSyntax
 
 .PHONY: test
 test:
