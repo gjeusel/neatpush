@@ -39,7 +39,7 @@ dependencies = [
 
   # webserver
   "starlette",
-  "uvicorn",
+  "uvicorn==0.31.*",
 
   # scraping:
   "httpx",

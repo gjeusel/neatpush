@@ -20,7 +20,11 @@ def run_server(
     log_config = LOGGING_CONFIG | {
         "loggers": {
             "uvicorn": {"handlers": ["default"], "level": "INFO", "propagate": False},
-            "uvicorn.error": {"level": "WARNING"},
+            "uvicorn.error": {
+                "handlers": ["default"],
+                "level": "INFO",
+                "propagate": False,
+            },
             "uvicorn.access": {
                 "handlers": ["access"],
                 "level": "INFO",

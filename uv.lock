@@ -723,7 +723,7 @@ wheels = [
 
 [[package]]
 name = "neatpush"
-version = "0.4.3.dev13+g7a02a72.d20240928"
+version = "0.4.3.dev34+gd231ee7.d20241005"
 source = { editable = "." }
 dependencies = [
     { name = "apprise" },
@@ -855,7 +855,7 @@ requires-dist = [
     { name = "types-dateparser", marker = "extra == 'dev'" },
     { name = "types-pytz", marker = "extra == 'all'" },
     { name = "types-pytz", marker = "extra == 'dev'" },
-    { name = "uvicorn" },
+    { name = "uvicorn", specifier = "==0.31.*" },
     { name = "vcrpy", marker = "extra == 'all'" },
     { name = "vcrpy", marker = "extra == 'dev'" },
 ]
