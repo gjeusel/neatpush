@@ -56,7 +56,7 @@ def retrieve_cached_mangas(s3client: S3Client) -> list[Manga]:
 
 def save_cached_mangas(s3client: S3Client, *, mangas: list[Manga]) -> None:
     content = orjson.dumps([m.dict() for m in mangas])
-    s3client.upload(CFG.BUCKET_KEY, content)
+    s3client.upload(CFG.BUCKET_KEY, content, is_public=True)
 
 
 def get_new_chapters(

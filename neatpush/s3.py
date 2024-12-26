@@ -34,6 +34,7 @@ _CONTENT_TYPE = "application/x-www-form-urlencoded"
 _AUTH_ALGORITHM = "AWS4-HMAC-SHA256"
 
 _METADATA_HEADER_PREFIX = "x-amz-meta-"
+_ACL_HEADER = "x-amz-acl"
 
 
 def _aws4_date_stamp(dt: datetime) -> str:
@@ -280,6 +281,7 @@ class S3Client:
         *,
         content_type: str | None = None,
         metadata: dict[str, Any] | None = None,
+        is_public: bool | None = False,
     ) -> None:
         filepath = _sanitize_path(filepath)
         content_type = (
@@ -297,6 +299,9 @@ class S3Client:
         if metadata:
             for key, value in metadata.items():
                 headers[f"{_METADATA_HEADER_PREFIX}{key}"] = str(value)
+
+        if is_public:
+            headers[_ACL_HEADER] = "public-read"
 
         r = self.http.put(
             endpoint,

@@ -723,7 +723,7 @@ wheels = [
 
 [[package]]
 name = "neatpush"
-version = "0.4.3.dev34+gd231ee7.d20241005"
+version = "0.4.3.dev37+g8c208ca"
 source = { editable = "." }
 dependencies = [
     { name = "apprise" },
